@@ -10,18 +10,18 @@
 /* ========== Reset & Base ========== */
 *{margin:0;padding:0;box-sizing:border-box}
 :root {
-  --bg: #0c0c1d;
-  --bg-card: #12122a;
-  --bg-card-hover: #18183a;
-  --text: #e2e8f0;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --gradient: linear-gradient(135deg, #6366f1, #a78bfa);
-  --gradient-glow: linear-gradient(135deg, #6366f1 0%, #a78bfa 50%, #c4b5fd 100%);
-  --border: rgba(99,102,241,0.1);
-  --border-hover: rgba(139,92,246,0.4);
-  --shadow-card: 0 4px 24px rgba(99,102,241,0.08);
-  --shadow-card-hover: 0 8px 40px rgba(139,92,246,0.18);
+  --bg: #f5f7ff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8faff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --gradient-glow: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+  --border: #e2e8f0;
+  --border-hover: rgba(99,102,241,0.3);
+  --shadow-card: 0 4px 24px rgba(99,102,241,0.06);
+  --shadow-card-hover: 0 8px 40px rgba(99,102,241,0.12);
   --radius: 16px;
   --radius-sm: 10px;
 }
@@ -44,14 +44,14 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ========== Background Glow ========== */
+/* ========== Background Glow (lighter) ========== */
 body::before {
   content: '';
   position: fixed; inset: 0; z-index: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(99,102,241,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(167,139,250,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 50% at 50% 80%, rgba(99,102,241,0.06) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(99,102,241,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(139,92,246,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% 80%, rgba(99,102,241,0.03) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -64,8 +64,8 @@ body::before {
 /* ========== Header ========== */
 .header {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 0; border-bottom: 1px solid var(--border);
-  margin-bottom: 10px;
+  padding: 24px 0; border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
 }
 .header-left {
   display: flex; align-items: center; gap: 12px;
@@ -80,9 +80,7 @@ body::before {
 }
 .header-brand {
   font-size: 22px; font-weight: 700;
-  background: var(--gradient-glow);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #1e293b;
   letter-spacing: -0.5px;
 }
 .header-date {
@@ -95,7 +93,7 @@ body::before {
   transition: color 0.2s;
   display: inline-flex; align-items: center; gap: 4px;
 }
-.header-back:hover { color: #a78bfa; }
+.header-back:hover { color: #6366f1; }
 
 /* ========== Overview Banner ========== */
 .overview {
@@ -107,6 +105,7 @@ body::before {
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-card);
 }
 .overview:hover {
   border-color: var(--border-hover);
@@ -116,22 +115,22 @@ body::before {
   content: '';
   position: absolute; top: -60%; right: -10%;
   width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(99,102,241,0.08), transparent);
+  background: radial-gradient(circle, rgba(99,102,241,0.06), transparent);
   border-radius: 50%; pointer-events: none;
 }
 .overview-badge {
   display: inline-block;
   font-size: 12px; font-weight: 600;
   padding: 3px 12px;
-  background: rgba(99,102,241,0.15);
-  border: 1px solid rgba(99,102,241,0.25);
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.15);
   border-radius: 20px;
-  color: #a5b4fc;
+  color: #6366f1;
   margin-bottom: 12px;
 }
 .overview h1 {
   font-size: 24px; font-weight: 800;
-  color: #f1f5f9;
+  color: #1e293b;
   margin-bottom: 10px;
   line-height: 1.3;
 }
@@ -163,6 +162,7 @@ body::before {
   padding: 22px 28px;
   margin-bottom: 40px;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-card);
 }
 .toc:hover {
   border-color: var(--border-hover);
@@ -170,7 +170,7 @@ body::before {
 }
 .toc-title {
   font-size: 14px; font-weight: 700;
-  color: #a5b4fc;
+  color: #6366f1;
   margin-bottom: 14px;
   display: flex; align-items: center; gap: 8px;
 }
@@ -182,11 +182,11 @@ body::before {
 }
 .toc-num {
   width: 24px; height: 24px; flex-shrink: 0;
-  background: rgba(99,102,241,0.12);
-  border: 1px solid rgba(99,102,241,0.2);
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.15);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 700; color: #a5b4fc;
+  font-size: 11px; font-weight: 700; color: #6366f1;
 }
 .toc-item a {
   font-size: 14px; color: var(--text-secondary);
@@ -194,7 +194,7 @@ body::before {
   transition: color 0.2s;
   line-height: 1.4;
 }
-.toc-item a:hover { color: #a78bfa; }
+.toc-item a:hover { color: #6366f1; }
 
 /* ========== Article — Detailed Layout ========== */
 .article-wrapper {
@@ -214,7 +214,7 @@ body::before {
 }
 .article-divider .line {
   flex: 1; height: 1px;
-  background: linear-gradient(90deg, rgba(99,102,241,0.3), transparent);
+  background: linear-gradient(90deg, rgba(99,102,241,0.2), transparent);
 }
 .article-divider .num {
   font-size: 13px; font-weight: 700;
@@ -225,7 +225,7 @@ body::before {
 }
 .article-divider .line-right {
   flex: 1; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.3));
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.2));
 }
 
 /* ========== Article Card (Detailed) ========== */
@@ -237,6 +237,7 @@ body::before {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 .article-detailed:hover {
   border-color: var(--border-hover);
@@ -251,10 +252,10 @@ body::before {
 }
 .article-detailed .art-tag {
   font-size: 12px; padding: 3px 12px;
-  background: rgba(99,102,241,0.12);
-  border: 1px solid rgba(99,102,241,0.2);
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.15);
   border-radius: 12px;
-  color: #a5b4fc;
+  color: #6366f1;
   font-weight: 600;
 }
 .article-detailed .art-date {
@@ -271,7 +272,7 @@ body::before {
 
 .article-detailed h2 {
   font-size: 22px; font-weight: 800;
-  color: #f1f5f9;
+  color: #1e293b;
   line-height: 1.4;
   margin-bottom: 18px;
   letter-spacing: -0.3px;
@@ -281,9 +282,7 @@ body::before {
   transition: color 0.2s;
 }
 .article-detailed h2 a:hover {
-  background: var(--gradient-glow);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #6366f1;
 }
 
 .article-detailed .art-summary {
@@ -294,15 +293,15 @@ body::before {
 
 /* ========== Key Points ========== */
 .art-keypoints {
-  background: rgba(99,102,241,0.06);
-  border: 1px solid rgba(99,102,241,0.12);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: var(--radius-sm);
   padding: 18px 22px;
   margin-bottom: 20px;
 }
 .art-keypoints .kp-title {
   font-size: 13px; font-weight: 700;
-  color: #a5b4fc;
+  color: #6366f1;
   margin-bottom: 10px;
   display: flex; align-items: center; gap: 6px;
 }
@@ -334,20 +333,20 @@ body::before {
 .art-source-link {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 13px; font-weight: 500;
-  color: #c4b5fd;
-  background: rgba(99,102,241,0.08);
-  border: 1px solid rgba(99,102,241,0.18);
+  color: #6366f1;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
   padding: 8px 14px;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 .art-source-link:hover {
-  background: rgba(99,102,241,0.18);
-  border-color: rgba(139,92,246,0.4);
-  color: #d8b4fe;
+  background: rgba(99,102,241,0.06);
+  border-color: rgba(99,102,241,0.3);
+  color: #6366f1;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(99,102,241,0.15);
+  box-shadow: 0 4px 12px rgba(99,102,241,0.1);
 }
 .art-source-link .src-icon {
   font-size: 14px;
@@ -355,8 +354,8 @@ body::before {
 
 /* ========== Headline article variant ========== */
 .article-detailed.headline {
-  border-left: 3px solid #a78bfa;
-  background: linear-gradient(135deg, #12122a 0%, #15153a 100%);
+  border-left: 3px solid #6366f1;
+  background: #ffffff;
 }
 
 /* ========== Footer / Subscribe ========== */
@@ -366,13 +365,13 @@ body::before {
   margin-top: 60px;
 }
 .footer p {
-  font-size: 13px; color: var(--text-muted);
+  font-size: 13px; color: #94a3b8;
   margin-bottom: 16px;
 }
 .footer a {
-  color: #818cf8; text-decoration: none;
+  color: #6366f1; text-decoration: none;
 }
-.footer a:hover { color: #a78bfa; }
+.footer a:hover { color: #8b5cf6; }
 .footer-subscribe {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--gradient);
@@ -381,12 +380,12 @@ body::before {
   padding: 12px 28px; border-radius: 50px;
   text-decoration: none;
   transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 16px rgba(99,102,241,0.3);
+  box-shadow: 0 4px 16px rgba(99,102,241,0.25);
   margin-bottom: 12px;
 }
 .footer-subscribe:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(167,139,250,0.4);
+  box-shadow: 0 8px 28px rgba(99,102,241,0.35);
 }
 .footer-home {
   font-size: 14px; color: var(--text-secondary);
@@ -394,7 +393,7 @@ body::before {
   text-decoration: none;
   transition: color 0.2s;
 }
-.footer-home:hover { color: #a78bfa; }
+.footer-home:hover { color: #6366f1; }
 
 /* ========== Scroll Progress Bar ========== */
 #progress-bar {
@@ -411,7 +410,7 @@ body::before {
 .back-top {
   position: fixed; bottom: 32px; right: 32px;
   width: 44px; height: 44px;
-  background: var(--bg-card);
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
@@ -430,15 +429,15 @@ body::before {
   pointer-events: auto;
 }
 .back-top:hover {
-  border-color: #a78bfa;
-  color: #a78bfa;
+  border-color: #6366f1;
+  color: #6366f1;
   box-shadow: var(--shadow-card-hover);
   transform: translateY(-3px);
 }
 
 /* ========== Responsive ========== */
 @media (max-width: 768px) {
-  .header { margin-bottom: 8px; }
+  .header { margin-bottom: 10px; }
   .overview { padding: 22px 20px 18px; }
   .overview h1 { font-size: 20px; }
   .toc { padding: 18px 20px; }
@@ -452,7 +451,7 @@ body::before {
 
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
-  .header { margin-bottom: 6px; }
+  .header { margin-bottom: 8px; }
   .header-brand { font-size: 18px; }
   .overview { padding: 18px 16px 16px; border-radius: var(--radius-sm); }
   .overview h1 { font-size: 18px; }
@@ -504,7 +503,7 @@ body::before {
     <h1>🔥 AI 圈今天发生了什么？</h1>
     <p>OpenAI 扔出 GPT-5 重磅炸弹，DeepMind 联合创始人宣布创业，Meta 开源 4000 亿参数 Llama 4，欧盟 AI 法案正式生效，微软 Copilot 全面升级。本期 5 篇精选，带你 10 分钟看懂 AI 圈关键动态。</p>
     <div class="overview-stats">
-      <span class="overview-stat"><span class="num">5</span> 篇文章</span>
+      <span class="overview-stat"><span class="num">10</span> 篇文章</span>
       <span class="overview-stat"><span class="num">约 10 分钟</span> 读完</span>
       <span class="overview-stat">📌 平均阅读时间 2 分钟/篇</span>
     </div>
