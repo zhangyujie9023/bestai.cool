@@ -331,7 +331,6 @@ body::before {
 
 <!-- Subscribe JS -->
 <script>
-var SUBSCRIBE_API = 'https://bestai-api.vercel.app/api/subscribe';
 async function doSubscribe(e) {
   e.preventDefault();
   var email = document.getElementById('semail').value.trim();
@@ -339,18 +338,18 @@ async function doSubscribe(e) {
   var btn = document.getElementById('sbtn');
   if (!email) return false;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.innerHTML='⚠️ 请输入有效的邮箱地址'; return false; }
-  btn.disabled = true; btn.textContent = '提交中...';
-  try {
-    await fetch(SUBSCRIBE_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: 'email=' + encodeURIComponent(email)
-    });
-  } catch (err) {}
+  
+  // 立即显示成功（先响应）
   msg.innerHTML = '✅ 订阅成功！明天早上查收邮件';
   msg.className = 'note success';
   document.getElementById('semail').value = '';
-  btn.disabled = false; btn.textContent = '免费订阅';
+  
+  // 后台异步记录（不阻塞用户）
+  fetch('https://bestai-api.vercel.app/api/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'email=' + encodeURIComponent(email)
+  }).catch(function(){});
   return false;
 }
 </script>
