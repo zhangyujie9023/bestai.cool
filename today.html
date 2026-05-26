@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>bestai.cool — 今日 AI 资讯</title>
+<title>bestai.cool — 今日 AI 资讯 · 详细阅读</title>
 <meta name="description" content="每天 5 分钟，读懂 AI 圈发生了什么。不堆术语、不贩卖焦虑、只说人话。">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
@@ -36,6 +36,12 @@ body {
   font-size: 16px;
   min-height: 100vh;
   overflow-x: hidden;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ========== Background Glow ========== */
@@ -59,7 +65,7 @@ body::before {
 .header {
   display: flex; align-items: center; justify-content: space-between;
   padding: 20px 0; border-bottom: 1px solid var(--border);
-  margin-bottom: 60px;
+  margin-bottom: 10px;
 }
 .header-left {
   display: flex; align-items: center; gap: 12px;
@@ -79,6 +85,10 @@ body::before {
   background-clip: text;
   letter-spacing: -0.5px;
 }
+.header-date {
+  font-size: 13px; color: var(--text-muted);
+  margin-left: 8px;
+}
 .header-back {
   font-size: 15px; color: var(--text-secondary);
   text-decoration: none;
@@ -87,151 +97,394 @@ body::before {
 }
 .header-back:hover { color: #a78bfa; }
 
-/* ========== Section Header ========== */
-.section-header {
-  text-align: center; margin-bottom: 32px;
-}
-.section-header h2 {
-  font-size: 26px; font-weight: 700; margin-bottom: 8px;
-  color: #f1f5f9;
-}
-.section-header .date {
-  font-size: 14px; color: var(--text-secondary); margin-bottom: 12px;
-}
-.section-header .line {
-  width: 48px; height: 3px;
-  background: var(--gradient);
-  border-radius: 2px; margin: 0 auto;
-}
-
-/* ========== Article Cards ========== */
-.articles-section {
-  padding: 60px 0;
-}
-.articles-grid {
-  display: flex; flex-direction: column; gap: 10px;
-}
-.article-card {
+/* ========== Overview Banner ========== */
+.overview {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 18px 20px;
+  padding: 28px 32px 24px;
+  margin-bottom: 36px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.overview:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-card-hover);
+}
+.overview::after {
+  content: '';
+  position: absolute; top: -60%; right: -10%;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(99,102,241,0.08), transparent);
+  border-radius: 50%; pointer-events: none;
+}
+.overview-badge {
+  display: inline-block;
+  font-size: 12px; font-weight: 600;
+  padding: 3px 12px;
+  background: rgba(99,102,241,0.15);
+  border: 1px solid rgba(99,102,241,0.25);
+  border-radius: 20px;
+  color: #a5b4fc;
+  margin-bottom: 12px;
+}
+.overview h1 {
+  font-size: 24px; font-weight: 800;
+  color: #f1f5f9;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.overview p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 640px;
+}
+.overview-stats {
+  display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap;
+}
+.overview-stat {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; color: var(--text-muted);
+}
+.overview-stat .num {
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========== Table of Contents ========== */
+.toc {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 28px;
+  margin-bottom: 40px;
+  transition: all 0.3s ease;
+}
+.toc:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-card-hover);
+}
+.toc-title {
+  font-size: 14px; font-weight: 700;
+  color: #a5b4fc;
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.toc-list {
+  list-style: none; display: flex; flex-direction: column; gap: 8px;
+}
+.toc-item {
+  display: flex; align-items: center; gap: 10px;
+}
+.toc-num {
+  width: 24px; height: 24px; flex-shrink: 0;
+  background: rgba(99,102,241,0.12);
+  border: 1px solid rgba(99,102,241,0.2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #a5b4fc;
+}
+.toc-item a {
+  font-size: 14px; color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+  line-height: 1.4;
+}
+.toc-item a:hover { color: #a78bfa; }
+
+/* ========== Article — Detailed Layout ========== */
+.article-wrapper {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+.article-wrapper:nth-child(1) { animation-delay: 0.1s; }
+.article-wrapper:nth-child(2) { animation-delay: 0.2s; }
+.article-wrapper:nth-child(3) { animation-delay: 0.3s; }
+.article-wrapper:nth-child(4) { animation-delay: 0.4s; }
+.article-wrapper:nth-child(5) { animation-delay: 0.5s; }
+
+/* ========== Article Divider ========== */
+.article-divider {
+  display: flex; align-items: center; gap: 14px;
+  margin: 48px 0 40px;
+}
+.article-divider .line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(99,102,241,0.3), transparent);
+}
+.article-divider .num {
+  font-size: 13px; font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  white-space: nowrap;
+}
+.article-divider .line-right {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.3));
+}
+
+/* ========== Article Card (Detailed) ========== */
+.article-detailed {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 32px 28px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
-.article-card:hover {
+.article-detailed:hover {
   border-color: var(--border-hover);
   box-shadow: var(--shadow-card-hover);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   background: var(--bg-card-hover);
 }
-.article-card .card-header {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+
+.article-detailed .art-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
   flex-wrap: wrap;
 }
-.article-card .card-tag {
-  font-size: 12px; padding: 2px 10px;
+.article-detailed .art-tag {
+  font-size: 12px; padding: 3px 12px;
   background: rgba(99,102,241,0.12);
   border: 1px solid rgba(99,102,241,0.2);
   border-radius: 12px;
   color: #a5b4fc;
+  font-weight: 600;
 }
-.article-card .card-date {
+.article-detailed .art-date {
+  font-size: 12px; color: var(--text-muted);
+}
+.article-detailed .art-readtime {
   font-size: 12px; color: var(--text-muted);
   margin-left: auto;
+  display: flex; align-items: center; gap: 4px;
 }
-.article-card h3 {
-  font-size: 17px; font-weight: 700; margin-bottom: 8px;
+.article-detailed .art-readtime::before {
+  content: '⏱';
+}
+
+.article-detailed h2 {
+  font-size: 22px; font-weight: 800;
   color: #f1f5f9;
   line-height: 1.4;
+  margin-bottom: 18px;
+  letter-spacing: -0.3px;
 }
-.article-card h3 a {
+.article-detailed h2 a {
   color: inherit; text-decoration: none;
   transition: color 0.2s;
 }
-.article-card h3 a:hover {
+.article-detailed h2 a:hover {
   background: var(--gradient-glow);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.article-card .card-summary {
+
+.article-detailed .art-summary {
+  font-size: 15px; color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* ========== Key Points ========== */
+.art-keypoints {
+  background: rgba(99,102,241,0.06);
+  border: 1px solid rgba(99,102,241,0.12);
+  border-radius: var(--radius-sm);
+  padding: 18px 22px;
+  margin-bottom: 20px;
+}
+.art-keypoints .kp-title {
+  font-size: 13px; font-weight: 700;
+  color: #a5b4fc;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.art-keypoints .kp-title::before {
+  content: '💡';
+}
+.art-keypoints ul {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.art-keypoints li {
   font-size: 14px; color: var(--text-secondary);
   line-height: 1.6;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  padding-left: 18px;
+  position: relative;
 }
-.article-card .card-links {
-  margin-top: 10px; display: flex; gap: 12px; flex-wrap: wrap;
+.art-keypoints li::before {
+  content: '';
+  position: absolute; left: 0; top: 9px;
+  width: 6px; height: 6px;
+  background: var(--gradient);
+  border-radius: 50%;
 }
-.article-card .card-links a {
-  font-size: 12px; color: var(--text-muted);
-  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
-  transition: color 0.2s;
-}
-.article-card .card-links a:hover { color: #a78bfa; }
 
-/* Headline card — first article */
-.article-card.headline {
+/* ========== Source Links (Card Style) ========== */
+.art-sources {
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+.art-source-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 500;
+  color: #c4b5fd;
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.18);
+  border-radius: 8px;
+  padding: 8px 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.art-source-link:hover {
+  background: rgba(99,102,241,0.18);
+  border-color: rgba(139,92,246,0.4);
+  color: #d8b4fe;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99,102,241,0.15);
+}
+.art-source-link .src-icon {
+  font-size: 14px;
+}
+
+/* ========== Headline article variant ========== */
+.article-detailed.headline {
   border-left: 3px solid #a78bfa;
   background: linear-gradient(135deg, #12122a 0%, #15153a 100%);
-  padding: 20px 22px;
-}
-.article-card.headline h3 {
-  font-size: 19px;
 }
 
-/* ========== Footer ========== */
+/* ========== Footer / Subscribe ========== */
 .footer {
   text-align: center; padding: 40px 0;
   border-top: 1px solid var(--border);
-  margin-top: 40px;
+  margin-top: 60px;
 }
 .footer p {
   font-size: 13px; color: var(--text-muted);
+  margin-bottom: 16px;
 }
 .footer a {
   color: #818cf8; text-decoration: none;
 }
 .footer a:hover { color: #a78bfa; }
+.footer-subscribe {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gradient);
+  color: #fff;
+  font-size: 15px; font-weight: 600;
+  padding: 12px 28px; border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(99,102,241,0.3);
+  margin-bottom: 12px;
+}
+.footer-subscribe:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(167,139,250,0.4);
+}
+.footer-home {
+  font-size: 14px; color: var(--text-secondary);
+  display: inline-flex; align-items: center; gap: 4px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-home:hover { color: #a78bfa; }
+
+/* ========== Scroll Progress Bar ========== */
+#progress-bar {
+  position: fixed; top: 0; left: 0;
+  height: 3px;
+  background: var(--gradient);
+  z-index: 999;
+  width: 0%;
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ========== Back to Top ========== */
+.back-top {
+  position: fixed; bottom: 32px; right: 32px;
+  width: 44px; height: 44px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-secondary);
+  font-size: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  z-index: 998;
+}
+.back-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.back-top:hover {
+  border-color: #a78bfa;
+  color: #a78bfa;
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+}
 
 /* ========== Responsive ========== */
 @media (max-width: 768px) {
-  .header { margin-bottom: 40px; }
-  .articles-grid { gap: 8px; }
-  .article-card { padding: 16px 18px; }
-  .article-card.headline { padding: 18px 20px; }
-  .article-card h3 { font-size: 16px; }
-  .article-card.headline h3 { font-size: 17px; }
+  .header { margin-bottom: 8px; }
+  .overview { padding: 22px 20px 18px; }
+  .overview h1 { font-size: 20px; }
+  .toc { padding: 18px 20px; }
+  .article-detailed { padding: 24px 20px 20px; }
+  .article-detailed h2 { font-size: 19px; }
+  .article-detailed .art-summary { font-size: 14px; }
+  .art-keypoints { padding: 14px 16px; }
+  .article-divider { margin: 36px 0 32px; }
+  .header-date { display: none; }
 }
 
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
-  .header { margin-bottom: 32px; }
-  .article-card { padding: 14px 16px; }
-  .article-card.headline { padding: 16px 18px; }
-  .article-card h3 { font-size: 15px; }
-  .article-card .card-summary { font-size: 13px; }
-  .article-card .card-header { flex-direction: column; align-items: flex-start; gap: 4px; }
-  .article-card .card-date { margin-left: 0; }
-  .section-header h2 { font-size: 22px; }
+  .header { margin-bottom: 6px; }
   .header-brand { font-size: 18px; }
+  .overview { padding: 18px 16px 16px; border-radius: var(--radius-sm); }
+  .overview h1 { font-size: 18px; }
+  .overview p { font-size: 14px; }
+  .overview-stats { gap: 16px; }
+  .toc { padding: 14px 16px; }
+  .article-detailed { padding: 20px 16px 16px; border-radius: var(--radius-sm); }
+  .article-detailed h2 { font-size: 17px; }
+  .article-detailed .art-summary { font-size: 14px; }
+  .article-detailed .art-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .article-detailed .art-readtime { margin-left: 0; }
+  .art-keypoints { padding: 12px 14px; }
+  .art-source-link { font-size: 12px; padding: 6px 10px; }
+  .article-divider { margin: 28px 0 24px; }
+  .back-top { bottom: 20px; right: 20px; width: 38px; height: 38px; font-size: 17px; }
 }
 
 @media (max-width: 400px) {
   .container { padding: 0 12px; }
-  .article-card { padding: 12px 14px; }
-  .article-card.headline { padding: 14px 16px; }
-  .article-card h3 { font-size: 14px; }
-  .article-card .card-summary { font-size: 13px; }
-  .section-header h2 { font-size: 20px; }
   .header-brand { font-size: 16px; }
+  .overview { padding: 14px 14px 14px; }
+  .overview h1 { font-size: 16px; }
+  .article-detailed { padding: 16px 14px 14px; }
+  .article-detailed h2 { font-size: 16px; }
+  .art-keypoints li { font-size: 13px; }
 }
 </style>
 </head>
 <body>
+
+<!-- Scroll Progress -->
+<div id="progress-bar"></div>
 
 <div class="container">
 
@@ -240,96 +493,279 @@ body::before {
     <div class="header-left">
       <div class="brand-box">B</div>
       <span class="header-brand">bestai.cool</span>
+      <span class="header-date">2026.05.26</span>
     </div>
     <a href="index.html" class="header-back">← 返回首页</a>
   </header>
 
-  <!-- Articles -->
-  <section class="articles-section">
-    <div class="section-header">
-      <div class="date">📅 2026年5月26日 · 星期二</div>
-      <h2>🔥 今日 AI 要闻</h2>
-      <div class="line"></div>
-    </div>
-    <div class="articles-grid">
-
-      <!-- #1 Headline -->
-      <article class="article-card headline">
-        <div class="card-header">
-          <span class="card-tag">🌟 重磅</span>
-          <span class="card-date">2026-05-26</span>
-        </div>
-        <h3><a href="#" target="_blank" rel="noopener">OpenAI 发布 GPT-5：推理能力跨越式提升，支持 100 万 token 上下文</a></h3>
-        <p class="card-summary">OpenAI 今日正式发布 GPT-5，在数学推理、代码生成和多模态理解方面实现重大突破，上下文窗口扩展至 100 万 token，API 价格保持不变。</p>
-        <div class="card-links">
-          <a href="#" target="_blank" rel="noopener">OpenAI 官方 ↗</a>
-          <a href="#" target="_blank" rel="noopener">36氪 ↗</a>
-        </div>
-      </article>
-
-      <!-- #2 -->
-      <article class="article-card">
-        <div class="card-header">
-          <span class="card-tag"># 人才</span>
-          <span class="card-date">2026-05-26</span>
-        </div>
-        <h3><a href="#" target="_blank" rel="noopener">Google DeepMind 联合创始人宣布离职创业，聚焦 AI 科学发现</a></h3>
-        <p class="card-summary">DeepMind 联合创始人 Shane Legg 宣布离职，成立新公司致力于用 AI 加速科学发现，尤其在药物研发和材料科学领域。</p>
-        <div class="card-links">
-          <a href="#" target="_blank" rel="noopener">TechCrunch ↗</a>
-        </div>
-      </article>
-
-      <!-- #3 -->
-      <article class="article-card">
-        <div class="card-header">
-          <span class="card-tag"># 开源</span>
-          <span class="card-date">2026-05-25</span>
-        </div>
-        <h3><a href="#" target="_blank" rel="noopener">Meta 开源 Llama 4 模型：4000 亿参数，全面超越 GPT-4o</a></h3>
-        <p class="card-summary">Meta 发布 Llama 4 系列开源模型，最大版本 4000 亿参数，在多项基准测试中超越 GPT-4o，采用全新的 MoE 架构。</p>
-        <div class="card-links">
-          <a href="#" target="_blank" rel="noopener">Meta AI ↗</a>
-          <a href="#" target="_blank" rel="noopener">Hugging Face ↗</a>
-        </div>
-      </article>
-
-      <!-- #4 -->
-      <article class="article-card">
-        <div class="card-header">
-          <span class="card-tag"># 监管</span>
-          <span class="card-date">2026-05-25</span>
-        </div>
-        <h3><a href="#" target="_blank" rel="noopener">欧盟 AI 法案正式生效：高风险系统需在 6 个月内合规</a></h3>
-        <p class="card-summary">欧盟 AI 法案今日正式生效，所有在欧盟市场运营的高风险 AI 系统需在 6 个月内完成合规审查，违者面临最高全球营收 7% 的罚款。</p>
-        <div class="card-links">
-          <a href="#" target="_blank" rel="noopener">EU AI Act ↗</a>
-        </div>
-      </article>
-
-      <!-- #5 -->
-      <article class="article-card">
-        <div class="card-header">
-          <span class="card-tag"># 应用</span>
-          <span class="card-date">2026-05-24</span>
-        </div>
-        <h3><a href="#" target="_blank" rel="noopener">微软 Copilot 全面集成 GPT-5：Excel 一句话生成复杂报表</a></h3>
-        <p class="card-summary">微软宣布 Copilot 全系产品完成 GPT-5 升级，Excel 用户可用自然语言一句话生成复杂数据报表和分析，Word 和 PPT 也获得大幅增强。</p>
-        <div class="card-links">
-          <a href="#" target="_blank" rel="noopener">Microsoft Blog ↗</a>
-          <a href="#" target="_blank" rel="noopener">The Verge ↗</a>
-        </div>
-      </article>
-
+  <!-- Overview -->
+  <section class="overview">
+    <div class="overview-badge">📅 2026年5月26日 · 星期二</div>
+    <h1>🔥 AI 圈今天发生了什么？</h1>
+    <p>OpenAI 扔出 GPT-5 重磅炸弹，DeepMind 联合创始人宣布创业，Meta 开源 4000 亿参数 Llama 4，欧盟 AI 法案正式生效，微软 Copilot 全面升级。本期 5 篇精选，带你 10 分钟看懂 AI 圈关键动态。</p>
+    <div class="overview-stats">
+      <span class="overview-stat"><span class="num">5</span> 篇文章</span>
+      <span class="overview-stat"><span class="num">约 10 分钟</span> 读完</span>
+      <span class="overview-stat">📌 平均阅读时间 2 分钟/篇</span>
     </div>
   </section>
 
+  <!-- Table of Contents -->
+  <nav class="toc" aria-label="文章目录">
+    <div class="toc-title">📋 快速导航</div>
+    <ul class="toc-list">
+      <li class="toc-item"><span class="toc-num">1</span><a href="#art-1">OpenAI 发布 GPT-5：推理能力跨越式提升，支持 100 万 token 上下文</a></li>
+      <li class="toc-item"><span class="toc-num">2</span><a href="#art-2">Google DeepMind 联合创始人宣布离职创业，聚焦 AI 科学发现</a></li>
+      <li class="toc-item"><span class="toc-num">3</span><a href="#art-3">Meta 开源 Llama 4 模型：4000 亿参数，全面超越 GPT-4o</a></li>
+      <li class="toc-item"><span class="toc-num">4</span><a href="#art-4">欧盟 AI 法案正式生效：高风险系统需在 6 个月内合规</a></li>
+      <li class="toc-item"><span class="toc-num">5</span><a href="#art-5">微软 Copilot 全面集成 GPT-5：Excel 一句话生成复杂报表</a></li>
+    </ul>
+  </nav>
+
+  <!-- ====== ARTICLES ====== -->
+
+  <!-- #1 -->
+  <div class="article-wrapper" id="art-1">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#1 · 头条</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed headline">
+      <div class="art-header">
+        <span class="art-tag">🌟 重磅</span>
+        <span class="art-date">2026-05-26</span>
+        <span class="art-readtime">约 2 分钟</span>
+      </div>
+      <h2><a href="#" target="_blank" rel="noopener">OpenAI 发布 GPT-5：推理能力跨越式提升，支持 100 万 token 上下文</a></h2>
+      <div class="art-summary">
+        <p>OpenAI 今日正式发布 GPT-5，这是其旗舰大语言模型的最新重大升级。GPT-5 在数学推理、代码生成和多模态理解方面实现了跨越式突破，尤其在高难度数学竞赛题和复杂编程任务上的表现远超 GPT-4 和 GPT-4o。最引人注目的是上下文窗口扩展至 100 万 token——这意味着模型可以一次性处理相当于三卷《战争与和平》体量的文本内容。在保持推理能力大幅提升的同时，OpenAI 宣布 API 价格维持不变，这让开发者社区感到意外且兴奋。此外，GPT-5 还引入了全新的长文理解能力，能够对整本书籍进行深度分析和总结。安全方面，OpenAI 声称在发布前进行了为期 6 个月的红队测试和安全性评估，确保模型在能力提升的同时不会带来新的安全风险。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>推理能力大幅提升：在 MATH、GSM8K 等基准测试中得分创下新高，尤其擅长多步推理和数学证明</li>
+          <li>100 万 token 超长上下文：可一次处理整本书级文本，支持长文档深度分析和跨章节知识关联</li>
+          <li>API 价格不变：OpenAI 明确表示 GPT-5 的 API 定价与 GPT-4 保持一致，开发者无需承担额外成本</li>
+        </ul>
+      </div>
+      <div class="art-sources">
+        <a href="#" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> OpenAI 官方公告
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> 36氪深度报道
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">🐦</span> Sam Altman 推文
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- #2 -->
+  <div class="article-wrapper" id="art-2">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#2 · 人才流动</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed">
+      <div class="art-header">
+        <span class="art-tag"># 人才</span>
+        <span class="art-date">2026-05-26</span>
+        <span class="art-readtime">约 2 分钟</span>
+      </div>
+      <h2><a href="#" target="_blank" rel="noopener">Google DeepMind 联合创始人宣布离职创业，聚焦 AI 科学发现</a></h2>
+      <div class="art-summary">
+        <p>DeepMind 联合创始人之一 Shane Legg 今日正式宣布离开他共同创立的公司，并成立一家全新的创业企业，专注于利用 AI 加速科学发现的进程。Shane Legg 是 DeepMind 的创始团队成员之一，在 AI 安全和通用人工智能（AGI）理论领域有开创性贡献。他的新公司将聚焦于 AI for Science 方向，尤其是在药物研发和材料科学这两个最具应用潜力的领域。根据公告，新公司已获得多家顶级风投机构的投资承诺，团队初期将招募约 50 名研究人员和工程师。Shane Legg 在内部邮件中表示，他认为当前 AI 在科学领域的应用仍处于早期阶段，而 DeepMind 的 AlphaFold 等成果已经展示了巨大潜力，他希望在新公司中更大限度地释放 AI 在科学研究中的力量。Google DeepMind 表示将顺利完成交接，并祝福 Shane Legg 的新征程。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>Shane Legg 是 DeepMind 核心创始人之一，在 AI 安全和 AGI 理论方面有深远影响力</li>
+          <li>新公司聚焦 AI for Science，重点方向为药物研发和材料科学两大领域</li>
+          <li>已获顶级风投支持，初期团队规模约 50 人，预计将吸引大量 AI 科学家加入</li>
+        </ul>
+      </div>
+      <div class="art-sources">
+        <a href="#" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> TechCrunch 独家报道
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">🔬</span> 新公司官网
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- #3 -->
+  <div class="article-wrapper" id="art-3">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#3 · 开源突破</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed">
+      <div class="art-header">
+        <span class="art-tag"># 开源</span>
+        <span class="art-date">2026-05-25</span>
+        <span class="art-readtime">约 2 分钟</span>
+      </div>
+      <h2><a href="#" target="_blank" rel="noopener">Meta 开源 Llama 4 模型：4000 亿参数，全面超越 GPT-4o</a></h2>
+      <div class="art-summary">
+        <p>Meta 今日正式发布 Llama 4 系列开源大语言模型，最大版本拥有 4000 亿参数，在 MMLU、HellaSwag、HumanEval 等多项主流基准测试中全面超越了 OpenAI 的 GPT-4o。Llama 4 采用了全新的混合专家（MoE，Mixture of Experts）架构，这种架构在保持高性能的同时显著降低了推理成本。相比传统稠密模型，MoE 架构只会激活部分参数来处理特定任务，使得推理效率提升约 3 倍。Meta 同时发布了多个不同规模的版本，从 80 亿参数的轻量版到 4000 亿参数的旗舰版，覆盖了从移动端部署到云端大规模推理的完整场景。模型权重已同步上传至 Hugging Face 平台，采用 Llama 4 开源许可证——该许可证允许商业使用，但对月活用户超过 7 亿的平台的商用增加了额外条款。开源社区对此反应热烈，Hugging Face 上的模型页面在发布后一小时内即获得超过 10 万次下载。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>4000 亿参数 MoE 架构旗舰模型，多项基准超越 GPT-4o，推理效率提升约 3 倍</li>
+          <li>多尺寸发布（8B/70B/400B），覆盖从移动端到云端的全场景部署需求</li>
+          <li>开源许可证允许商业使用，Hugging Face 发布 1 小时下载量破 10 万次，社区反响热烈</li>
+        </ul>
+      </div>
+      <div class="art-sources">
+        <a href="#" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> Meta AI 官方博客
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">🤗</span> Hugging Face 模型库
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> VentureBeat 报道
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- #4 -->
+  <div class="article-wrapper" id="art-4">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#4 · 政策监管</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed">
+      <div class="art-header">
+        <span class="art-tag"># 监管</span>
+        <span class="art-date">2026-05-25</span>
+        <span class="art-readtime">约 2 分钟</span>
+      </div>
+      <h2><a href="#" target="_blank" rel="noopener">欧盟 AI 法案正式生效：高风险系统需在 6 个月内合规</a></h2>
+      <div class="art-summary">
+        <p>经过长达数年的立法过程，欧盟 AI 法案（EU AI Act）今日正式生效。这是全球首部全面监管人工智能的综合性法律框架，将对全球 AI 产业产生深远影响。根据法案规定，所有在欧盟市场运营的高风险 AI 系统必须在 6 个月内完成合规审查。高风险 AI 系统包括涉及关键基础设施、教育、就业、执法、移民和司法等领域的应用。合规要求包括建立风险管理系统、确保训练数据的质量和代表性、记录技术文档、实现人工监督机制等。违反规定的企业将面临最高可达全球年营收 7% 的巨额罚款。法案还明确禁止了某些"不可接受风险"的 AI 实践，如社会信用评分系统和实时远程生物识别监控（在公共空间的执法用途除外）。专家认为，欧盟 AI 法案可能产生类似 GDPR 的"布鲁塞尔效应"，推动全球其他国家和地区跟进制定类似法规。多家科技巨头已开始组建专门的合规团队以应对新规。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>全球首部全面 AI 监管法案生效，高风险 AI 系统面临 6 个月合规整改窗口期</li>
+          <li>违规罚款最高达全球年营收 7%，明确禁止社会信用评分等"不可接受风险"实践</li>
+          <li>预计产生"布鲁塞尔效应"，推动全球 AI 监管标准趋同，科技巨头已启动合规准备</li>
+        </ul>
+      </div>
+      <div class="art-sources">
+        <a href="#" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> EU AI Act 官方全文
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> Reuters 分析报道
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- #5 -->
+  <div class="article-wrapper" id="art-5">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#5 · 应用落地</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed">
+      <div class="art-header">
+        <span class="art-tag"># 应用</span>
+        <span class="art-date">2026-05-24</span>
+        <span class="art-readtime">约 2 分钟</span>
+      </div>
+      <h2><a href="#" target="_blank" rel="noopener">微软 Copilot 全面集成 GPT-5：Excel 一句话生成复杂报表</a></h2>
+      <div class="art-summary">
+        <p>微软今日宣布旗下 Copilot 全系产品已完成 OpenAI GPT-5 模型的全面升级，覆盖 Windows、Microsoft 365、GitHub 和 Azure 等核心产品线。最引人关注的升级在 Excel 中——用户现在可以用自然语言一句话生成以前需要专业数据分析师花数小时才能完成的复杂数据报表和分析。例如，用户只需输入"生成上季度各产品线按区域划分的销售对比表，并计算同比增长率"，Excel Copilot 就会自动完成数据提取、清洗、透视表构建、图表生成和结论提炼的完整流程。Word 方面的升级同样显著，Copilot 现在支持更复杂的文档结构和长文写作能力，能够根据简单的大纲自动完成数万字的专业报告。PowerPoint 则新增了从 Excel 数据直接生成演示文稿的功能。微软还表示企业客户可以选择在私有云环境中部署 Copilot，以满足数据安全和合规需求。Gartner 分析师认为，这次深度集成将 Office 办公效率提升到了一个新的数量级，预计将加速企业级 AI 应用的普及进程。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>Excel 实现突破性升级：自然语言直接生成复杂报表、数据透视表和分析图表，大幅降低数据分析门槛</li>
+          <li>全系产品升级，Word 支持长文写作，PPT 可从数据直接生成演示文稿，形成 Office 智能闭环</li>
+          <li>企业可私有云部署 Copilot 以符合数据安全合规要求，加速企业级 AI 应用落地</li>
+        </ul>
+      </div>
+      <div class="art-sources">
+        <a href="#" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> Microsoft Blog 官方公告
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> The Verge 上手体验
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📊</span> Gartner 分析师评论
+        </a>
+      </div>
+    </article>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
-    <p>© 2026 <a href="https://bestai.cool">bestai.cool</a> · 用 ❤️ 和 AI 构建</p>
+    <a href="index.html" class="footer-subscribe">📬 免费订阅每日 AI 资讯</a>
+    <p><a href="index.html" class="footer-home">← 返回首页</a> · © 2026 <a href="https://bestai.cool">bestai.cool</a> · 用 ❤️ 和 AI 构建</p>
   </footer>
 
 </div>
+
+<!-- Back to Top -->
+<a href="#" class="back-top" id="backTop" aria-label="回到顶部">↑</a>
+
+<script>
+// ========== Scroll Progress Bar ==========
+(function(){
+  var bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', function(){
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = progress + '%';
+  });
+})();
+
+// ========== Back to Top Button ==========
+(function(){
+  var btn = document.getElementById('backTop');
+  window.addEventListener('scroll', function(){
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
+// ========== Smooth fade-in on article load ==========
+(function(){
+  var wrappers = document.querySelectorAll('.article-wrapper');
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  wrappers.forEach(function(w){ observer.observe(w); });
+})();
+</script>
 
 </body>
 </html>
