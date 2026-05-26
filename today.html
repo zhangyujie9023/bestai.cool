@@ -206,6 +206,11 @@ body::before {
 .article-wrapper:nth-child(3) { animation-delay: 0.3s; }
 .article-wrapper:nth-child(4) { animation-delay: 0.4s; }
 .article-wrapper:nth-child(5) { animation-delay: 0.5s; }
+.article-wrapper:nth-child(6) { animation-delay: 0.6s; }
+.article-wrapper:nth-child(7) { animation-delay: 0.7s; }
+.article-wrapper:nth-child(8) { animation-delay: 0.8s; }
+.article-wrapper:nth-child(9) { animation-delay: 0.9s; }
+.article-wrapper:nth-child(10) { animation-delay: 1.0s; }
 
 /* ========== Article Divider ========== */
 .article-divider {
@@ -501,11 +506,11 @@ body::before {
   <section class="overview">
     <div class="overview-badge">📅 2026年5月26日 · 星期二</div>
     <h1>🔥 AI 圈今天发生了什么？</h1>
-    <p>OpenAI 扔出 GPT-5 重磅炸弹，DeepMind 联合创始人宣布创业，Meta 开源 4000 亿参数 Llama 4，欧盟 AI 法案正式生效，微软 Copilot 全面升级。本期 5 篇精选，带你 10 分钟看懂 AI 圈关键动态。</p>
+    <p>Anthropic 300 亿美元融资估值破 9000 亿超越 OpenAI，Meta 裁员 7800 人后称"员工数据练 AI 效果更佳"，Google I/O 发布 Gemini 3.5 Flash 与 Spark 个人代理，英伟达宣布物理 AI 的 ChatGPT 时刻，DeepSeek V4 开源万亿参数模型。本期 10 篇精选，带你 15 分钟看懂 AI 圈关键动态。</p>
     <div class="overview-stats">
-      <span class="overview-stat"><span class="num">5</span> 篇文章</span>
-      <span class="overview-stat"><span class="num">约 10 分钟</span> 读完</span>
-      <span class="overview-stat">📌 平均阅读时间 2 分钟/篇</span>
+      <span class="overview-stat"><span class="num">10</span> 篇文章</span>
+      <span class="overview-stat"><span class="num">约 15 分钟</span> 读完</span>
+      <span class="overview-stat">📌 平均阅读时间 1.5 分钟/篇</span>
     </div>
   </section>
 
@@ -513,11 +518,16 @@ body::before {
   <nav class="toc" aria-label="文章目录">
     <div class="toc-title">📋 快速导航</div>
     <ul class="toc-list">
-      <li class="toc-item"><span class="toc-num">1</span><a href="#art-1">OpenAI 发布 GPT-5：推理能力跨越式提升，支持 100 万 token 上下文</a></li>
-      <li class="toc-item"><span class="toc-num">2</span><a href="#art-2">Google DeepMind 联合创始人宣布离职创业，聚焦 AI 科学发现</a></li>
-      <li class="toc-item"><span class="toc-num">3</span><a href="#art-3">Meta 开源 Llama 4 模型：4000 亿参数，全面超越 GPT-4o</a></li>
-      <li class="toc-item"><span class="toc-num">4</span><a href="#art-4">欧盟 AI 法案正式生效：高风险系统需在 6 个月内合规</a></li>
-      <li class="toc-item"><span class="toc-num">5</span><a href="#art-5">微软 Copilot 全面集成 GPT-5：Excel 一句话生成复杂报表</a></li>
+      <li class="toc-item"><span class="toc-num">1</span><a href="#art-1">Anthropic 超 300 亿美元融资，估值 9000 亿超越 OpenAI</a></li>
+      <li class="toc-item"><span class="toc-num">2</span><a href="#art-2">OpenAI IPO 冲刺：本周提交申请，马斯克诉讼被驳回</a></li>
+      <li class="toc-item"><span class="toc-num">3</span><a href="#art-3">Meta 裁员 7800 人，扎克伯格称员工数据训练 AI 更佳</a></li>
+      <li class="toc-item"><span class="toc-num">4</span><a href="#art-4">Google I/O 2026：Gemini 3.5 Flash 与 Spark 个人代理登场</a></li>
+      <li class="toc-item"><span class="toc-num">5</span><a href="#art-5">英伟达黄仁勋：物理 AI 的 ChatGPT 时刻已到来</a></li>
+      <li class="toc-item"><span class="toc-num">6</span><a href="#art-6">Stability AI 发布 Stability Audio 3.0，6 分钟专业音乐</a></li>
+      <li class="toc-item"><span class="toc-num">7</span><a href="#art-7">DeepSeek V4 开源：万亿参数 MoE，价格仅 GPT-5 的 1/18</a></li>
+      <li class="toc-item"><span class="toc-num">8</span><a href="#art-8">五大 AI 实验室全部纳入美国联邦安全审查体系</a></li>
+      <li class="toc-item"><span class="toc-num">9</span><a href="#art-9">字节跳动 Seedance 2.0 视频模型全面接入豆包</a></li>
+      <li class="toc-item"><span class="toc-num">10</span><a href="#art-10">谷歌 DeepMind：2026 年将是 AI 持续学习之年</a></li>
     </ul>
   </nav>
 
@@ -527,7 +537,7 @@ body::before {
   <div class="article-wrapper" id="art-1">
     <div class="article-divider">
       <span class="line"></span>
-      <span class="num">#1 · 头条</span>
+      <span class="num">#1 · 融资动态</span>
       <span class="line-right"></span>
     </div>
     <article class="article-detailed headline">
@@ -536,27 +546,27 @@ body::before {
         <span class="art-date">2026-05-26</span>
         <span class="art-readtime">约 2 分钟</span>
       </div>
-      <h2><a href="#" target="_blank" rel="noopener">OpenAI 发布 GPT-5：推理能力跨越式提升，支持 100 万 token 上下文</a></h2>
+      <h2><a href="https://www.techtimes.com/articles/317066/20260523/anthropic-funding-round-top-30b-900b-valuation-would-surpass-openai-most-valuable-ai-startup.htm" target="_blank" rel="noopener">Anthropic 超 300 亿美元融资即将关闭，估值破 9000 亿超越 OpenAI</a></h2>
       <div class="art-summary">
-        <p>OpenAI 今日正式发布 GPT-5，这是其旗舰大语言模型的最新重大升级。GPT-5 在数学推理、代码生成和多模态理解方面实现了跨越式突破，尤其在高难度数学竞赛题和复杂编程任务上的表现远超 GPT-4 和 GPT-4o。最引人注目的是上下文窗口扩展至 100 万 token——这意味着模型可以一次性处理相当于三卷《战争与和平》体量的文本内容。在保持推理能力大幅提升的同时，OpenAI 宣布 API 价格维持不变，这让开发者社区感到意外且兴奋。此外，GPT-5 还引入了全新的长文理解能力，能够对整本书籍进行深度分析和总结。安全方面，OpenAI 声称在发布前进行了为期 6 个月的红队测试和安全性评估，确保模型在能力提升的同时不会带来新的安全风险。</p>
+        <p>Anthropic 最快将于本周完成新一轮超大规模融资，规模超过 300 亿美元，公司估值有望突破 9000 亿美元，正式超越 OpenAI 成为全球估值最高的 AI 初创企业。据知情人士透露，Anthropic 预计下个月年化营收将超过 500 亿美元，较 2025 年底的 90 亿美元增长超 5 倍，增长核心驱动力来自 Claude Code 企业级部署和金融、法律等高价值行业解决方案。本轮融资规模已超出 Anthropic 原定的 300 亿美元目标，是继 2 月完成 300 亿美元 Series G 轮（估值 3800 亿）后的又一轮大规模融资。彭博社报道称最终投资承诺和条款仍在确认中，但 Anthropic 正以惊人的速度巩固其在 AI 产业中的领导地位。</p>
       </div>
       <div class="art-keypoints">
         <div class="kp-title">关键要点</div>
         <ul>
-          <li>推理能力大幅提升：在 MATH、GSM8K 等基准测试中得分创下新高，尤其擅长多步推理和数学证明</li>
-          <li>100 万 token 超长上下文：可一次处理整本书级文本，支持长文档深度分析和跨章节知识关联</li>
-          <li>API 价格不变：OpenAI 明确表示 GPT-5 的 API 定价与 GPT-4 保持一致，开发者无需承担额外成本</li>
+          <li>融资规模超 300 亿美元，估值突破 9000 亿，超越 OpenAI 成为全球估值最高 AI 初创公司</li>
+          <li>年化营收预计超 500 亿美元，较 2025 年底增长超 5 倍，企业级业务驱动爆发式增长</li>
+          <li>半年内完成两轮超大规模融资，Anthropic 正以前所未有的速度巩固行业领导地位</li>
         </ul>
       </div>
       <div class="art-sources">
-        <a href="#" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📄</span> OpenAI 官方公告
+        <a href="https://www.techtimes.com/articles/317066/20260523/anthropic-funding-round-top-30b-900b-valuation-would-surpass-openai-most-valuable-ai-startup.htm" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> TechTimes
         </a>
-        <a href="#" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📰</span> 36氪深度报道
+        <a href="https://m.163.com/dy/article/KTLDIHSO05561FZU.html" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> 网易/彭博社
         </a>
-        <a href="#" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">🐦</span> Sam Altman 推文
+        <a href="https://invezz.com/news/2026/05/15/anthropic-surpasses-openai-in-value-as-900b-round-nears-close/" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📊</span> Invezz 分析
         </a>
       </div>
     </article>
@@ -566,33 +576,36 @@ body::before {
   <div class="article-wrapper" id="art-2">
     <div class="article-divider">
       <span class="line"></span>
-      <span class="num">#2 · 人才流动</span>
+      <span class="num">#2 · IPO 动态</span>
       <span class="line-right"></span>
     </div>
     <article class="article-detailed">
       <div class="art-header">
-        <span class="art-tag"># 人才</span>
+        <span class="art-tag"># 资本</span>
         <span class="art-date">2026-05-26</span>
         <span class="art-readtime">约 2 分钟</span>
       </div>
-      <h2><a href="#" target="_blank" rel="noopener">Google DeepMind 联合创始人宣布离职创业，聚焦 AI 科学发现</a></h2>
+      <h2><a href="https://m.163.com/dy/article/KTIUSGC205561FZI.html" target="_blank" rel="noopener">OpenAI IPO 冲刺：最早本周提交申请，马斯克诉讼被驳回扫清最大障碍</a></h2>
       <div class="art-summary">
-        <p>DeepMind 联合创始人之一 Shane Legg 今日正式宣布离开他共同创立的公司，并成立一家全新的创业企业，专注于利用 AI 加速科学发现的进程。Shane Legg 是 DeepMind 的创始团队成员之一，在 AI 安全和通用人工智能（AGI）理论领域有开创性贡献。他的新公司将聚焦于 AI for Science 方向，尤其是在药物研发和材料科学这两个最具应用潜力的领域。根据公告，新公司已获得多家顶级风投机构的投资承诺，团队初期将招募约 50 名研究人员和工程师。Shane Legg 在内部邮件中表示，他认为当前 AI 在科学领域的应用仍处于早期阶段，而 DeepMind 的 AlphaFold 等成果已经展示了巨大潜力，他希望在新公司中更大限度地释放 AI 在科学研究中的力量。Google DeepMind 表示将顺利完成交接，并祝福 Shane Legg 的新征程。</p>
+        <p>OpenAI 正加速推进 IPO 进程。据多家权威财经媒体披露，该公司最快将于本周五向美国证券交易委员会秘密递交 IPO 招股说明书草案，目标于 2026 年 9 月完成上市，高盛和摩根士丹利正协助起草文件。与此同时，美国加州奥克兰联邦法院一个 9 人陪审团仅用不到两个小时便一致认定，埃隆·马斯克起诉 OpenAI 及其 CEO Sam Altman 的时间过晚，驳回其诉讼。Wedbush 分析师称，这场裁决几乎扫清了 OpenAI 未来 IPO 最大的法律障碍，估值甚至可能冲向 1 万亿美元。马斯克已放话将继续上诉。对于依赖 OpenAI API 的开发者而言，IPO 意味着 API 定价和服务等级协议的确定性将提升。</p>
       </div>
       <div class="art-keypoints">
         <div class="kp-title">关键要点</div>
         <ul>
-          <li>Shane Legg 是 DeepMind 核心创始人之一，在 AI 安全和 AGI 理论方面有深远影响力</li>
-          <li>新公司聚焦 AI for Science，重点方向为药物研发和材料科学两大领域</li>
-          <li>已获顶级风投支持，初期团队规模约 50 人，预计将吸引大量 AI 科学家加入</li>
+          <li>OpenAI 最快本周五秘密递交 IPO 申请，目标 2026 年 9 月完成上市</li>
+          <li>马斯克诉讼被陪审团不到 2 小时驳回，扫清最大法律障碍，估值或冲向 1 万亿美元</li>
+          <li>高盛和摩根士丹利协助起草招股书，IPO 后将带来 API 定价和服务等级确定性</li>
         </ul>
       </div>
       <div class="art-sources">
-        <a href="#" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📄</span> TechCrunch 独家报道
+        <a href="https://m.163.com/dy/article/KTIUSGC205561FZI.html" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> 网易/环球市场
         </a>
-        <a href="#" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">🔬</span> 新公司官网
+        <a href="https://new.qq.com/rain/a/20260519A03VKH00" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">⚖️</span> 腾讯新闻/法庭裁决
+        </a>
+        <a href="https://m.sohu.com/a/1025540718_362225" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📊</span> 搜狐财经
         </a>
       </div>
     </article>
@@ -602,36 +615,33 @@ body::before {
   <div class="article-wrapper" id="art-3">
     <div class="article-divider">
       <span class="line"></span>
-      <span class="num">#3 · 开源突破</span>
+      <span class="num">#3 · 人事重组</span>
       <span class="line-right"></span>
     </div>
     <article class="article-detailed">
       <div class="art-header">
-        <span class="art-tag"># 开源</span>
-        <span class="art-date">2026-05-25</span>
+        <span class="art-tag"># 争议</span>
+        <span class="art-date">2026-05-26</span>
         <span class="art-readtime">约 2 分钟</span>
       </div>
-      <h2><a href="#" target="_blank" rel="noopener">Meta 开源 Llama 4 模型：4000 亿参数，全面超越 GPT-4o</a></h2>
+      <h2><a href="https://finance.sina.com.cn/tech/roll/2026-05-26/doc-inhzequv2353271.shtml" target="_blank" rel="noopener">Meta 裁员约 7800 人，扎克伯格称"利用员工数据训练 AI 效果更佳"</a></h2>
       <div class="art-summary">
-        <p>Meta 今日正式发布 Llama 4 系列开源大语言模型，最大版本拥有 4000 亿参数，在 MMLU、HellaSwag、HumanEval 等多项主流基准测试中全面超越了 OpenAI 的 GPT-4o。Llama 4 采用了全新的混合专家（MoE，Mixture of Experts）架构，这种架构在保持高性能的同时显著降低了推理成本。相比传统稠密模型，MoE 架构只会激活部分参数来处理特定任务，使得推理效率提升约 3 倍。Meta 同时发布了多个不同规模的版本，从 80 亿参数的轻量版到 4000 亿参数的旗舰版，覆盖了从移动端部署到云端大规模推理的完整场景。模型权重已同步上传至 Hugging Face 平台，采用 Llama 4 开源许可证——该许可证允许商业使用，但对月活用户超过 7 亿的平台的商用增加了额外条款。开源社区对此反应热烈，Hugging Face 上的模型页面在发布后一小时内即获得超过 10 万次下载。</p>
+        <p>据快科技 5 月 26 日报道，Meta 在今年 4 月宣布裁减约 10% 的员工，波及约 7800 人。与多数企业在裁员后低调处理不同，扎克伯格在裁员同日公开表示，利用员工生成的数据来训练 AI 模型效果显著优于合成数据或公开数据集。这场牵涉近 8000 个岗位的裁员行动，背后是一次以 AI 为核心逻辑的全面组织再造——约 7000 名员工转岗至 AI 相关团队，管理层也经历大幅调整。扎克伯格认为，员工日常工作中产生的高质量交互数据对训练下一代 AI 模型具有独特价值。然而这一做法也引发了关于员工数据隐私和伦理边界的广泛讨论，多个员工团体表示关注。</p>
       </div>
       <div class="art-keypoints">
         <div class="kp-title">关键要点</div>
         <ul>
-          <li>4000 亿参数 MoE 架构旗舰模型，多项基准超越 GPT-4o，推理效率提升约 3 倍</li>
-          <li>多尺寸发布（8B/70B/400B），覆盖从移动端到云端的全场景部署需求</li>
-          <li>开源许可证允许商业使用，Hugging Face 发布 1 小时下载量破 10 万次，社区反响热烈</li>
+          <li>Meta 裁员约 7800 人（约 10%），同时约 7000 人转岗至 AI 团队</li>
+          <li>扎克伯格称员工数据训练 AI 效果优于合成数据，引发隐私伦理争议</li>
+          <li>裁员背后是 Meta 以 AI 为核心逻辑的全面组织再造，管理层大幅调整</li>
         </ul>
       </div>
       <div class="art-sources">
-        <a href="#" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📄</span> Meta AI 官方博客
+        <a href="https://finance.sina.com.cn/tech/roll/2026-05-26/doc-inhzequv2353271.shtml" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> 新浪财经
         </a>
-        <a href="#" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">🤗</span> Hugging Face 模型库
-        </a>
-        <a href="#" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📰</span> VentureBeat 报道
+        <a href="https://news.qq.com/rain/a/20260519A06EHF00" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> 腾讯新闻/BI
         </a>
       </div>
     </article>
@@ -641,33 +651,36 @@ body::before {
   <div class="article-wrapper" id="art-4">
     <div class="article-divider">
       <span class="line"></span>
-      <span class="num">#4 · 政策监管</span>
+      <span class="num">#4 · 模型发布</span>
       <span class="line-right"></span>
     </div>
     <article class="article-detailed">
       <div class="art-header">
-        <span class="art-tag"># 监管</span>
-        <span class="art-date">2026-05-25</span>
+        <span class="art-tag">🌟 Google I/O</span>
+        <span class="art-date">2026-05-19</span>
         <span class="art-readtime">约 2 分钟</span>
       </div>
-      <h2><a href="#" target="_blank" rel="noopener">欧盟 AI 法案正式生效：高风险系统需在 6 个月内合规</a></h2>
+      <h2><a href="https://m.163.com/dy/article/KTDGNR4F0511CQ7I.html" target="_blank" rel="noopener">Google I/O 2026：Gemini 3.5 Flash 发布，Gemini Spark 个人 AI 代理登场</a></h2>
       <div class="art-summary">
-        <p>经过长达数年的立法过程，欧盟 AI 法案（EU AI Act）今日正式生效。这是全球首部全面监管人工智能的综合性法律框架，将对全球 AI 产业产生深远影响。根据法案规定，所有在欧盟市场运营的高风险 AI 系统必须在 6 个月内完成合规审查。高风险 AI 系统包括涉及关键基础设施、教育、就业、执法、移民和司法等领域的应用。合规要求包括建立风险管理系统、确保训练数据的质量和代表性、记录技术文档、实现人工监督机制等。违反规定的企业将面临最高可达全球年营收 7% 的巨额罚款。法案还明确禁止了某些"不可接受风险"的 AI 实践，如社会信用评分系统和实时远程生物识别监控（在公共空间的执法用途除外）。专家认为，欧盟 AI 法案可能产生类似 GDPR 的"布鲁塞尔效应"，推动全球其他国家和地区跟进制定类似法规。多家科技巨头已开始组建专门的合规团队以应对新规。</p>
+        <p>Google 于 5 月 19 日举办 I/O 2026 开幕活动，CEO Sundar Pichai 宣布"Google Search 就是 AI Search"，并发布一系列重磅 AI 新品。Gemini 3.5 Flash 生成输出 Token 速度约为其他前沿模型的 4 倍，多项基准测试超越 Gemini 3.1 Pro，Agent 任务性能提升至 83.6%，专为 AI Agent 和编码工具等场景优化。Gemini Spark 作为个人 AI 代理可 24 小时运行于谷歌云，深度整合 Google 生态（Gmail、Calendar、Docs 等），实现跨应用的自主任务执行。Gemini Omni 实现全模态交互，支持视频生成与实时编辑，并嵌入 SynthID 数字水印防伪。Google 还展示了世界模型、Project Mariner 等先锋项目，标志着谷歌全面进入"智能体 Gemini 时代"。</p>
       </div>
       <div class="art-keypoints">
         <div class="kp-title">关键要点</div>
         <ul>
-          <li>全球首部全面 AI 监管法案生效，高风险 AI 系统面临 6 个月合规整改窗口期</li>
-          <li>违规罚款最高达全球年营收 7%，明确禁止社会信用评分等"不可接受风险"实践</li>
-          <li>预计产生"布鲁塞尔效应"，推动全球 AI 监管标准趋同，科技巨头已启动合规准备</li>
+          <li>Gemini 3.5 Flash 生成速度约为竞品 4 倍，Agent 任务性能达 83.6%，专为编码和 Agent 优化</li>
+          <li>Gemini Spark 可 24 小时运行的云端个人 AI 代理，深度整合 Gmail、Calendar、Docs 等生态</li>
+          <li>Gemini Omni 全模态交互 + SynthID 数字水印，世界模型和 Project Mariner 展示 AGI 路线图</li>
         </ul>
       </div>
       <div class="art-sources">
-        <a href="#" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📄</span> EU AI Act 官方全文
+        <a href="https://m.163.com/dy/article/KTDGNR4F0511CQ7I.html" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> 网易科技
         </a>
-        <a href="#" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📰</span> Reuters 分析报道
+        <a href="https://m.sohu.com/a/1025216404_121956424" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> 搜狐深度
+        </a>
+        <a href="https://www.163.com/dy/article/KTC813LU05118O92.html" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">🎥</span> 网易全程报道
         </a>
       </div>
     </article>
@@ -677,36 +690,210 @@ body::before {
   <div class="article-wrapper" id="art-5">
     <div class="article-divider">
       <span class="line"></span>
-      <span class="num">#5 · 应用落地</span>
+      <span class="num">#5 · 机器人</span>
       <span class="line-right"></span>
     </div>
     <article class="article-detailed">
       <div class="art-header">
-        <span class="art-tag"># 应用</span>
-        <span class="art-date">2026-05-24</span>
+        <span class="art-tag"># 物理AI</span>
+        <span class="art-date">2026-05-26</span>
         <span class="art-readtime">约 2 分钟</span>
       </div>
-      <h2><a href="#" target="_blank" rel="noopener">微软 Copilot 全面集成 GPT-5：Excel 一句话生成复杂报表</a></h2>
+      <h2><a href="https://www.163.com/dy/article/KILRGNH305118VMB.html" target="_blank" rel="noopener">英伟达黄仁勋：物理 AI 的"ChatGPT 时刻"已到来，发布 OSMO 机器人平台</a></h2>
       <div class="art-summary">
-        <p>微软今日宣布旗下 Copilot 全系产品已完成 OpenAI GPT-5 模型的全面升级，覆盖 Windows、Microsoft 365、GitHub 和 Azure 等核心产品线。最引人关注的升级在 Excel 中——用户现在可以用自然语言一句话生成以前需要专业数据分析师花数小时才能完成的复杂数据报表和分析。例如，用户只需输入"生成上季度各产品线按区域划分的销售对比表，并计算同比增长率"，Excel Copilot 就会自动完成数据提取、清洗、透视表构建、图表生成和结论提炼的完整流程。Word 方面的升级同样显著，Copilot 现在支持更复杂的文档结构和长文写作能力，能够根据简单的大纲自动完成数万字的专业报告。PowerPoint 则新增了从 Excel 数据直接生成演示文稿的功能。微软还表示企业客户可以选择在私有云环境中部署 Copilot，以满足数据安全和合规需求。Gartner 分析师认为，这次深度集成将 Office 办公效率提升到了一个新的数量级，预计将加速企业级 AI 应用的普及进程。</p>
+        <p>英伟达 CEO 黄仁勋在最新演讲中宣布，物理 AI 的"ChatGPT 时刻"已经到来。NVIDIA 发布 OSMO 机器人编排平台，用于管理和协调机器人开发工作流，Hexagon Robotics 等企业已开始使用，微软也将其集成到 Azure Robotics Accelerator 工具链中。NVIDIA 还与 Hugging Face 达成深度合作，将 Isaac 与 GR00T 技术集成到开源 LeRobot 机器人框架中，直接连接了全球 200 万机器人开发者。黄仁勋明确表示，自动驾驶汽车将是第一个大规模物理 AI 系统，2025 款奔驰 CLA 将集成英伟达完整自动驾驶技术栈，首批搭载车辆将于 2026 年 Q1 在美国上路。他预测，机器人领域将复刻大语言模型在过去两年经历的指数级爆发轨迹。</p>
       </div>
       <div class="art-keypoints">
         <div class="kp-title">关键要点</div>
         <ul>
-          <li>Excel 实现突破性升级：自然语言直接生成复杂报表、数据透视表和分析图表，大幅降低数据分析门槛</li>
-          <li>全系产品升级，Word 支持长文写作，PPT 可从数据直接生成演示文稿，形成 Office 智能闭环</li>
-          <li>企业可私有云部署 Copilot 以符合数据安全合规要求，加速企业级 AI 应用落地</li>
+          <li>NVIDIA 发布 OSMO 机器人编排平台，微软 Azure 已集成，Hexagon Robotics 等已采用</li>
+          <li>与 Hugging Face 合作将技术集成到开源 LeRobot 框架，触达 200 万机器人开发者</li>
+          <li>奔驰 CLA 将搭载英伟达全栈自动驾驶技术，2026 年 Q1 美国上路，物理 AI 正式落地</li>
         </ul>
       </div>
       <div class="art-sources">
-        <a href="#" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📄</span> Microsoft Blog 官方公告
+        <a href="https://www.163.com/dy/article/KILRGNH305118VMB.html" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> 网易科技
         </a>
-        <a href="#" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📰</span> The Verge 上手体验
+        <a href="https://www.163.com/dy/article/KIM827D30550A7UY.html" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">🚗</span> 网易/黄仁勋演讲
         </a>
-        <a href="#" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📊</span> Gartner 分析师评论
+      </div>
+    </article>
+  </div>
+
+  <!-- #6 -->
+  <div class="article-wrapper" id="art-6">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#6 · 音频 AI</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed">
+      <div class="art-header">
+        <span class="art-tag"># 生成式AI</span>
+        <span class="art-date">2026-05-20</span>
+        <span class="art-readtime">约 1.5 分钟</span>
+      </div>
+      <h2><a href="https://finance.sina.com.cn/tech/digi/2026-05-20/doc-inhyqiye9518441.shtml" target="_blank" rel="noopener">Stability AI 发布 Stability Audio 3.0，可生成 6 分钟以上专业级音乐</a></h2>
+      <div class="art-summary">
+        <p>5 月 20 日，AI 初创公司 Stability AI 推出全新音频生成模型家族 Stability Audio 3.0。顶级版本可生成长达六分钟以上的专业级音乐，支持多种音乐风格和乐器组合。此次共推出四款模型，覆盖从轻量快速生成到高保真专业创作的完整场景。Stability Audio 3.0 在音质、连贯性和创作控制力方面较前代实现大幅提升，不仅能够生成完整的音乐作品，还支持局部编辑、风格迁移和人声合成等高级功能。音乐制作人和内容创作者对此反响热烈，标志着 AI 音乐生成从"玩具"级正式迈向专业创作水准。与 Stability AI 的 Stable Diffusion 在图像领域的路线一脉相承，音频 3.0 延续了其开源开放的传统。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>顶级版本可生成 6 分钟以上专业级音乐，支持多风格、多乐器组合</li>
+          <li>四款模型覆盖轻量到高保真全场景，支持局部编辑和风格迁移等高级功能</li>
+          <li>延续开源传统，AI 音乐生成正式迈向专业创作水准</li>
+        </ul>
+      </div>
+      <div class="art-sources">
+        <a href="https://finance.sina.com.cn/tech/digi/2026-05-20/doc-inhyqiye9518441.shtml" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> 新浪财经
+        </a>
+        <a href="https://stability.ai/" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">🎵</span> Stability AI 官网
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- #7 -->
+  <div class="article-wrapper" id="art-7">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#7 · 开源模型</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed">
+      <div class="art-header">
+        <span class="art-tag"># 开源</span>
+        <span class="art-date">2026-04-24</span>
+        <span class="art-readtime">约 1.5 分钟</span>
+      </div>
+      <h2><a href="https://cloud.tencent.com/developer/article/2659300" target="_blank" rel="noopener">DeepSeek V4 发布：万亿参数 MoE 开源模型，API 价格仅 GPT-5 的 1/18</a></h2>
+      <div class="art-summary">
+        <p>DeepSeek V4 于 4 月 24 日正式开源发布，采用万亿参数 MoE（混合专家）架构，支持 256K 长上下文和原生 Function Calling。在代码生成、复杂推理等任务上表现优异，与 GPT-5 和 Claude Opus 4.6 等旗舰模型性能相当。但其最引人注目的特点是定价策略——以 GPT-5 约 1/18 的价格提供旗舰级性能，API 价格极具竞争力。DeepSeek V4 包含 Pro 和 Lite 两个版本，已在 GitHub 和 Hugging Face 全面开源，社区反响热烈。来自腾讯云的技术深度测评显示，V4 在编程、数学推理和多轮对话等多个维度表现均衡。这一高性价比路线正在重塑大模型市场的竞争格局，尤其对中小型开发者和企业极具吸引力。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>万亿参数 MoE 架构，256K 超长上下文，支持原生 Function Calling，性能与 GPT-5 相当</li>
+          <li>API 价格仅为 GPT-5 的 1/18，极致性价比重塑大模型市场格局</li>
+          <li>Pro/Lite 双版本 + 全面开源，在 GitHub 和 Hugging Face 上社区反响热烈</li>
+        </ul>
+      </div>
+      <div class="art-sources">
+        <a href="https://cloud.tencent.com/developer/article/2659300" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> 腾讯云深度测评
+        </a>
+        <a href="https://baike.baidu.com/item/DeepSeek-V4/65717031" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📖</span> 百度百科
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- #8 -->
+  <div class="article-wrapper" id="art-8">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#8 · 安全监管</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed">
+      <div class="art-header">
+        <span class="art-tag"># 监管</span>
+        <span class="art-date">2026-05-05</span>
+        <span class="art-readtime">约 1.5 分钟</span>
+      </div>
+      <h2><a href="https://xueqiu.com/1527849020/387965819" target="_blank" rel="noopener">美国五大 AI 实验室全部纳入联邦安全审查体系，模型上线前须过审</a></h2>
+      <div class="art-summary">
+        <p>2026 年 5 月 5 日，美国商务部 NIST 下属的 AI 标准与创新中心（CAISI）与 Google DeepMind、微软、xAI 签署新协议，连同此前已签约的 Anthropic 和 OpenAI，美国五大 AI 实验室至此全部纳入联邦政府的"模型上线前安全审查"体系。该机制要求前沿 AI 模型在公开发布前，政府专家团队在保密设施中对其进行系统性安全测试，评估模型是否可能被滥用于网络攻击、生化武器制造、大规模欺诈等高危场景。这标志着美国政府正在建立一套类似于"金融产品上市前审批"的 AI 安全审查框架。分析人士认为，此举将显著影响未来 AI 模型的发布节奏和研发策略。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>Anthropic、OpenAI、Google DeepMind、微软、xAI 五大实验室全部加入审查体系</li>
+          <li>模型上线前需经过政府专家保密环境下的安全测试，评估网络攻击、生化武器等滥用风险</li>
+          <li>类似"金融产品上市审批"的 AI 安全框架，将深远影响模型发布节奏和研发策略</li>
+        </ul>
+      </div>
+      <div class="art-sources">
+        <a href="https://xueqiu.com/1527849020/387965819" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> 雪球/路透
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- #9 -->
+  <div class="article-wrapper" id="art-9">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#9 · 视频生成</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed">
+      <div class="art-header">
+        <span class="art-tag"># 字节跳动</span>
+        <span class="art-date">2026-05-26</span>
+        <span class="art-readtime">约 1.5 分钟</span>
+      </div>
+      <h2><a href="https://www.doubao.com/" target="_blank" rel="noopener">字节跳动 Seedance 2.0 视频生成模型全面接入豆包，AI 视频走向大众</a></h2>
+      <div class="art-summary">
+        <p>字节跳动旗下的 Seedance 2.0 视频生成模型现已全面接入豆包 AI 助手，用户可直接在豆包中免费使用文本生成视频功能。Seedance 2.0 在视频质量、连贯性和生成速度方面较前代显著提升，支持多种风格和场景的创作，包括写实、动画、科幻等不同视觉风格。与此同时，字节跳动的即梦 AI 平台也集成了这一能力，使视频创作门槛进一步降低——用户只需输入一段文字描述，即可在数分钟内获得一条完整的短视频。这一升级标志着 AI 视频生成正在从专业工具走向大众消费级应用，与抖音等内容平台的结合将产生巨大的创作生态效应。字节跳动在 AI 视频领域的加码，也反映出国内 AI 大厂在视频生成赛道上的激烈竞争。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>Seedance 2.0 全面接入豆包，用户可免费文本生成视频，支持写实、动画等多种风格</li>
+          <li>即梦 AI 平台同步集成，数分钟内即可从文字获得完整短视频，创作门槛大幅降低</li>
+          <li>AI 视频生成从专业工具走向大众消费级应用，与抖音生态结合前景可期</li>
+        </ul>
+      </div>
+      <div class="art-sources">
+        <a href="https://www.doubao.com/" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> 豆包官网
+        </a>
+        <a href="https://jimeng.jianying.com/ai-tool/home" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">🎬</span> 即梦AI
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- #10 -->
+  <div class="article-wrapper" id="art-10">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#10 · 前沿研究</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed">
+      <div class="art-header">
+        <span class="art-tag"># 研究</span>
+        <span class="art-date">2026-05-26</span>
+        <span class="art-readtime">约 1.5 分钟</span>
+      </div>
+      <h2><a href="https://baijiahao.baidu.com/s?id=1853181328423653972" target="_blank" rel="noopener">谷歌 DeepMind：2026 年将成为 AI"持续学习"之年，永续进化不再是梦</a></h2>
+      <div class="art-summary">
+        <p>谷歌 DeepMind 研究员发布重磅预测刷屏全网：2026 年将会成为 AI"持续学习"（Continual Learning）的突破之年。当前所有大语言模型在训练完成后知识即固定，无法在不遗忘已有知识（灾难性遗忘）的前提下持续吸收新信息。DeepMind 认为持续学习技术已接近重大突破，将使 AI 模型像人类一样持续进化——在不丢失已学能力的同时不断学习新知识。此前，Jeff Dean 在 NeurIPS 2025 炉边谈话上已明确指出这一方向是解决当前 AI 能力瓶颈的关键路径。DeepMind 的长期路线图还预测：2030 年实现全自动编程，2050 年 AI 将主导诺奖级科学研究。这一愿景如果实现，将从根本上改变 AI 的开发范式——从"训练-部署-冻结"转向"持续进化"模式。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>2026 年被视为持续学习（Continual Learning）突破之年，解决灾难性遗忘难题</li>
+          <li>让 AI 像人类一样持续进化，在不遗忘已有知识的同时吸收新信息</li>
+          <li>DeepMind 长期路线图：2030 全自动编程，2050 AI 主导诺奖级科学发现</li>
+        </ul>
+      </div>
+      <div class="art-sources">
+        <a href="https://baijiahao.baidu.com/s?id=1853181328423653972" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> 新智元/百家号
+        </a>
+        <a href="https://www.zhihu.com/question/1990730123046035646" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">💬</span> 知乎热议
         </a>
       </div>
     </article>
