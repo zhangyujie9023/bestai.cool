@@ -1,0 +1,24 @@
+# 密钥文件
+.env
+.env.local
+.env.*
+credentials.json
+secrets/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# 缓存
+__pycache__/
+*.pyc
+
+# 本地脚本（不在网站上）
+scripts/
+*.sh
+
+# 编辑器
+.vscode/
+.idea/
