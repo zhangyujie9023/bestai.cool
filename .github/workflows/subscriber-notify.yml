@@ -13,7 +13,7 @@ jobs:
 
       - name: Process new subscribers
         env:
-          RESEND_KEY: re_Fnhyk1nF_5suGWzCnvLV1jqvsF7zUbZYX
+          RESEND_KEY: \${{ secrets.RESEND_KEY }}
         run: |
           NEW_COUNT=0
           for file in data/subscribers/*.json; do
