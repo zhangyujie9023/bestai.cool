@@ -10,21 +10,20 @@
 /* ========== Reset & Base ========== */
 *{margin:0;padding:0;box-sizing:border-box}
 :root {
-  --bg: #0a0a1a;
-  --bg-card: rgba(255,255,255,0.04);
-  --bg-card-hover: rgba(255,255,255,0.07);
-  --text: #e8e8f0;
-  --text-secondary: #9ca3b8;
-  --text-muted: #6b7280;
+  --bg: #f5f7ff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8faff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
   --gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
   --gradient-glow: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
-  --border: rgba(99,102,241,0.12);
+  --border: #e2e8f0;
   --border-hover: rgba(99,102,241,0.3);
-  --shadow-card: 0 4px 24px rgba(0,0,0,0.3);
-  --shadow-card-hover: 0 8px 40px rgba(99,102,241,0.15);
+  --shadow-card: 0 4px 24px rgba(99,102,241,0.06);
+  --shadow-card-hover: 0 8px 40px rgba(99,102,241,0.12);
   --radius: 16px;
   --radius-sm: 10px;
-  --glow-indigo: 0 0 60px rgba(99,102,241,0.06);
 }
 
 html { scroll-behavior: smooth; }
@@ -37,25 +36,22 @@ body {
   font-size: 16px;
   min-height: 100vh;
   overflow-x: hidden;
+  animation: fadeIn 0.5s ease;
 }
 
-/* ========== Subtle Background Glow ========== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== Background Glow (lighter) ========== */
 body::before {
   content: '';
   position: fixed; inset: 0; z-index: 0;
   background:
-    radial-gradient(ellipse 70% 50% at 20% 5%, rgba(99,102,241,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 80% 15%, rgba(139,92,246,0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 50% 85%, rgba(99,102,241,0.04) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-/* ========== Second glow layer for depth ========== */
-body::after {
-  content: '';
-  position: fixed; inset: 0; z-index: 0;
-  background:
-    radial-gradient(ellipse 40% 30% at 30% 40%, rgba(99,102,241,0.03) 0%, transparent 50%);
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(99,102,241,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(139,92,246,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% 80%, rgba(99,102,241,0.03) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -65,19 +61,11 @@ body::after {
   max-width: 880px; margin: 0 auto; padding: 0 24px;
 }
 
-/* ========== Fade-in animations ========== */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
 /* ========== Header ========== */
 .header {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--border);
+  padding: 24px 0; border-bottom: 1px solid var(--border);
   margin-bottom: 12px;
-  animation: fadeInUp 0.5s ease;
 }
 .header-left {
   display: flex; align-items: center; gap: 12px;
@@ -89,11 +77,10 @@ body::after {
   display: flex; align-items: center; justify-content: center;
   font-size: 18px; font-weight: 800; color: #fff;
   flex-shrink: 0;
-  box-shadow: 0 0 20px rgba(99,102,241,0.25);
 }
 .header-brand {
   font-size: 22px; font-weight: 700;
-  color: #e8e8f0;
+  color: #1e293b;
   letter-spacing: -0.5px;
 }
 .header-date {
@@ -106,7 +93,7 @@ body::after {
   transition: color 0.2s;
   display: inline-flex; align-items: center; gap: 4px;
 }
-.header-back:hover { color: #818cf8; }
+.header-back:hover { color: #6366f1; }
 
 /* ========== Overview Banner ========== */
 .overview {
@@ -118,9 +105,7 @@ body::after {
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
-  box-shadow: var(--shadow-card), var(--glow-indigo);
-  backdrop-filter: blur(2px);
-  animation: fadeInUp 0.5s ease 0.1s both;
+  box-shadow: var(--shadow-card);
 }
 .overview:hover {
   border-color: var(--border-hover);
@@ -129,23 +114,23 @@ body::after {
 .overview::after {
   content: '';
   position: absolute; top: -60%; right: -10%;
-  width: 250px; height: 250px;
-  background: radial-gradient(circle, rgba(99,102,241,0.08), transparent);
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(99,102,241,0.06), transparent);
   border-radius: 50%; pointer-events: none;
 }
 .overview-badge {
   display: inline-block;
   font-size: 12px; font-weight: 600;
   padding: 3px 12px;
-  background: rgba(99,102,241,0.12);
-  border: 1px solid rgba(99,102,241,0.2);
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.15);
   border-radius: 20px;
-  color: #a5b4fc;
+  color: #6366f1;
   margin-bottom: 12px;
 }
 .overview h1 {
   font-size: 24px; font-weight: 800;
-  color: #e8e8f0;
+  color: #1e293b;
   margin-bottom: 10px;
   line-height: 1.3;
 }
@@ -177,9 +162,7 @@ body::after {
   padding: 22px 28px;
   margin-bottom: 40px;
   transition: all 0.3s ease;
-  box-shadow: var(--shadow-card), var(--glow-indigo);
-  backdrop-filter: blur(2px);
-  animation: fadeInUp 0.5s ease 0.2s both;
+  box-shadow: var(--shadow-card);
 }
 .toc:hover {
   border-color: var(--border-hover);
@@ -187,7 +170,7 @@ body::after {
 }
 .toc-title {
   font-size: 14px; font-weight: 700;
-  color: #a5b4fc;
+  color: #6366f1;
   margin-bottom: 14px;
   display: flex; align-items: center; gap: 8px;
 }
@@ -199,11 +182,11 @@ body::after {
 }
 .toc-num {
   width: 24px; height: 24px; flex-shrink: 0;
-  background: rgba(99,102,241,0.12);
-  border: 1px solid rgba(99,102,241,0.2);
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.15);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 700; color: #a5b4fc;
+  font-size: 11px; font-weight: 700; color: #6366f1;
 }
 .toc-item a {
   font-size: 14px; color: var(--text-secondary);
@@ -211,32 +194,32 @@ body::after {
   transition: color 0.2s;
   line-height: 1.4;
 }
-.toc-item a:hover { color: #818cf8; }
+.toc-item a:hover { color: #6366f1; }
 
-/* ========== Article Wrapper ========== */
+/* ========== Article — Detailed Layout ========== */
 .article-wrapper {
   opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
+  animation: fadeIn 0.6s ease forwards;
 }
 .article-wrapper:nth-child(1) { animation-delay: 0.1s; }
-.article-wrapper:nth-child(2) { animation-delay: 0.15s; }
-.article-wrapper:nth-child(3) { animation-delay: 0.2s; }
-.article-wrapper:nth-child(4) { animation-delay: 0.25s; }
-.article-wrapper:nth-child(5) { animation-delay: 0.3s; }
-.article-wrapper:nth-child(6) { animation-delay: 0.35s; }
-.article-wrapper:nth-child(7) { animation-delay: 0.4s; }
-.article-wrapper:nth-child(8) { animation-delay: 0.45s; }
-.article-wrapper:nth-child(9) { animation-delay: 0.5s; }
-.article-wrapper:nth-child(10) { animation-delay: 0.55s; }
+.article-wrapper:nth-child(2) { animation-delay: 0.2s; }
+.article-wrapper:nth-child(3) { animation-delay: 0.3s; }
+.article-wrapper:nth-child(4) { animation-delay: 0.4s; }
+.article-wrapper:nth-child(5) { animation-delay: 0.5s; }
+.article-wrapper:nth-child(6) { animation-delay: 0.6s; }
+.article-wrapper:nth-child(7) { animation-delay: 0.7s; }
+.article-wrapper:nth-child(8) { animation-delay: 0.8s; }
+.article-wrapper:nth-child(9) { animation-delay: 0.9s; }
+.article-wrapper:nth-child(10) { animation-delay: 1.0s; }
 
-/* ========== Article Divider (Gradient) ========== */
+/* ========== Article Divider ========== */
 .article-divider {
   display: flex; align-items: center; gap: 14px;
   margin: 48px 0 40px;
 }
 .article-divider .line {
   flex: 1; height: 1px;
-  background: linear-gradient(90deg, rgba(99,102,241,0.3), transparent);
+  background: linear-gradient(90deg, rgba(99,102,241,0.2), transparent);
 }
 .article-divider .num {
   font-size: 13px; font-weight: 700;
@@ -247,10 +230,10 @@ body::after {
 }
 .article-divider .line-right {
   flex: 1; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.3));
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.2));
 }
 
-/* ========== Article Card ========== */
+/* ========== Article Card (Detailed) ========== */
 .article-detailed {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -259,25 +242,13 @@ body::after {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-card), var(--glow-indigo);
-  backdrop-filter: blur(4px);
-}
-.article-detailed::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.25), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  box-shadow: var(--shadow-card);
 }
 .article-detailed:hover {
   border-color: var(--border-hover);
-  box-shadow: var(--shadow-card-hover), 0 0 80px rgba(99,102,241,0.08);
-  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
   background: var(--bg-card-hover);
-}
-.article-detailed:hover::before {
-  opacity: 1;
 }
 
 .article-detailed .art-header {
@@ -286,10 +257,10 @@ body::after {
 }
 .article-detailed .art-tag {
   font-size: 12px; padding: 3px 12px;
-  background: rgba(99,102,241,0.12);
-  border: 1px solid rgba(99,102,241,0.2);
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.15);
   border-radius: 12px;
-  color: #a5b4fc;
+  color: #6366f1;
   font-weight: 600;
 }
 .article-detailed .art-date {
@@ -306,7 +277,7 @@ body::after {
 
 .article-detailed h2 {
   font-size: 22px; font-weight: 800;
-  color: #e8e8f0;
+  color: #1e293b;
   line-height: 1.4;
   margin-bottom: 18px;
   letter-spacing: -0.3px;
@@ -316,7 +287,7 @@ body::after {
   transition: color 0.2s;
 }
 .article-detailed h2 a:hover {
-  color: #a5b4fc;
+  color: #6366f1;
 }
 
 .article-detailed .art-summary {
@@ -325,67 +296,89 @@ body::after {
   margin-bottom: 20px;
 }
 
-/* ========== 元启划重点 (Indigo left border) ========== */
-.art-commentary {
-  margin-top: 20px;
-  padding: 16px 20px;
-  background: rgba(99,102,241,0.06);
-  border-left: 3px solid #818cf8;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-size: 14px;
-  color: #c4b5fd;
-  line-height: 1.8;
+/* ========== Key Points ========== */
+.art-keypoints {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-sm);
+  padding: 18px 22px;
+  margin-bottom: 20px;
+}
+.art-keypoints .kp-title {
+  font-size: 13px; font-weight: 700;
+  color: #6366f1;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.art-keypoints .kp-title::before {
+  content: '💡';
+}
+.art-keypoints ul {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.art-keypoints li {
+  font-size: 14px; color: var(--text-secondary);
+  line-height: 1.6;
+  padding-left: 18px;
   position: relative;
-  transition: all 0.2s ease;
 }
-.art-commentary:hover {
-  background: rgba(99,102,241,0.09);
-  border-left-color: #a78bfa;
-}
-.art-commentary .comment-label {
-  font-weight: 700;
-  color: #a78bfa;
-  font-style: normal;
-  display: inline;
+.art-keypoints li::before {
+  content: '';
+  position: absolute; left: 0; top: 9px;
+  width: 6px; height: 6px;
+  background: var(--gradient);
+  border-radius: 50%;
 }
 
-/* ========== Source Links (Dark) ========== */
+/* ========== Source Links (Card Style) ========== */
 .art-sources {
   display: flex; gap: 10px; flex-wrap: wrap;
 }
 .art-source-link {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 13px; font-weight: 500;
-  color: #a5b4fc;
-  background: rgba(99,102,241,0.08);
-  border: 1px solid rgba(99,102,241,0.15);
+  color: #6366f1;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
   padding: 8px 14px;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 .art-source-link:hover {
-  background: rgba(99,102,241,0.15);
-  border-color: rgba(99,102,241,0.35);
-  color: #c7d2fe;
+  background: rgba(99,102,241,0.06);
+  border-color: rgba(99,102,241,0.3);
+  color: #6366f1;
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(99,102,241,0.15);
+  box-shadow: 0 4px 12px rgba(99,102,241,0.1);
 }
 .art-source-link .src-icon {
   font-size: 14px;
 }
 
+/* ========== Commentary section ========== */
+.art-commentary {
+  margin-top: 20px;
+  padding: 14px 18px;
+  background: rgba(99,102,241,0.04);
+  border-left: 3px solid #a78bfa;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 14px;
+  color: #6b7280;
+  font-style: italic;
+  line-height: 1.7;
+}
+.art-commentary .comment-label {
+  font-weight: 700;
+  color: #8b5cf6;
+  font-style: normal;
+}
+
 /* ========== Headline article variant ========== */
 .article-detailed.headline {
-  border-left: 3px solid #818cf8;
-  background: rgba(99,102,241,0.06);
-}
-.article-detailed.headline::after {
-  content: '';
-  position: absolute; top: -40%; right: -10%;
-  width: 180px; height: 180px;
-  background: radial-gradient(circle, rgba(99,102,241,0.06), transparent);
-  border-radius: 50%; pointer-events: none;
+  border-left: 3px solid #6366f1;
+  background: #ffffff;
 }
 
 /* ========== Footer / Subscribe ========== */
@@ -393,41 +386,40 @@ body::after {
   text-align: center; padding: 40px 0;
   border-top: 1px solid var(--border);
   margin-top: 60px;
-  animation: fadeInUp 0.5s ease 0.3s both;
 }
 .footer p {
   font-size: 14px; color: #475569;
   margin-bottom: 16px;
 }
 .footer a {
-  color: #818cf8; text-decoration: none;
+  color: #4f46e5; text-decoration: none;
   font-weight: 500;
 }
-.footer a:hover { color: #a5b4fc; text-decoration: underline; }
+.footer a:hover { color: #6366f1; text-decoration: underline; }
 .footer-subscribe {
   display: inline-flex; align-items: center; gap: 8px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: linear-gradient(135deg, #818cf8, #a78bfa);
   color: #fff;
   font-size: 16px; font-weight: 700;
   padding: 14px 32px; border-radius: 50px;
   text-decoration: none;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 24px rgba(99,102,241,0.35);
+  box-shadow: 0 4px 20px rgba(168,139,250,0.3);
   margin-bottom: 16px;
   letter-spacing: 0.5px;
 }
 .footer-subscribe:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(99,102,241,0.5);
+  box-shadow: 0 8px 30px rgba(99,102,241,0.45);
 }
 .footer-home {
-  font-size: 14px; color: var(--text-muted);
+  font-size: 14px; color: #475569;
   display: inline-flex; align-items: center; gap: 4px;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
 }
-.footer-home:hover { color: #818cf8; }
+.footer-home:hover { color: #4f46e5; }
 
 /* ========== Scroll Progress Bar ========== */
 #progress-bar {
@@ -438,14 +430,13 @@ body::after {
   width: 0%;
   transition: width 0.1s linear;
   border-radius: 0 2px 2px 0;
-  box-shadow: 0 0 12px rgba(99,102,241,0.4);
 }
 
 /* ========== Back to Top ========== */
 .back-top {
   position: fixed; bottom: 32px; right: 32px;
   width: 44px; height: 44px;
-  background: rgba(255,255,255,0.05);
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
@@ -457,7 +448,6 @@ body::after {
   transform: translateY(12px);
   pointer-events: none;
   z-index: 998;
-  backdrop-filter: blur(4px);
 }
 .back-top.visible {
   opacity: 1;
@@ -465,9 +455,9 @@ body::after {
   pointer-events: auto;
 }
 .back-top:hover {
-  border-color: #818cf8;
-  color: #a5b4fc;
-  box-shadow: var(--shadow-card-hover), 0 0 30px rgba(99,102,241,0.1);
+  border-color: #6366f1;
+  color: #6366f1;
+  box-shadow: var(--shadow-card-hover);
   transform: translateY(-3px);
 }
 
@@ -480,7 +470,7 @@ body::after {
   .article-detailed { padding: 24px 20px 20px; }
   .article-detailed h2 { font-size: 19px; }
   .article-detailed .art-summary { font-size: 14px; }
-  .art-commentary { padding: 14px 16px; font-size: 13px; }
+  .art-keypoints { padding: 14px 16px; }
   .article-divider { margin: 36px 0 32px; }
   .header-date { display: none; }
 }
@@ -499,7 +489,7 @@ body::after {
   .article-detailed .art-summary { font-size: 14px; }
   .article-detailed .art-header { flex-direction: column; align-items: flex-start; gap: 4px; }
   .article-detailed .art-readtime { margin-left: 0; }
-  .art-commentary { padding: 12px 14px; font-size: 13px; }
+  .art-keypoints { padding: 12px 14px; }
   .art-source-link { font-size: 12px; padding: 6px 10px; }
   .article-divider { margin: 28px 0 24px; }
   .back-top { bottom: 20px; right: 20px; width: 38px; height: 38px; font-size: 17px; }
@@ -512,7 +502,7 @@ body::after {
   .overview h1 { font-size: 16px; }
   .article-detailed { padding: 16px 14px 14px; }
   .article-detailed h2 { font-size: 16px; }
-  .art-commentary { font-size: 12px; }
+  .art-keypoints li { font-size: 13px; }
 }
 </style>
 </head>
@@ -537,7 +527,7 @@ body::after {
   <section class="overview">
     <div class="overview-badge">📅 2026年5月30日 · 星期六</div>
     <h1>🔥 AI 圈今天发生了什么？</h1>
-    <p>Anthropic 估值 9650 亿美元超 OpenAI，字节跳动豪掷 700 亿美金砸 AI 基建，OpenAI GPT-5.5 专注「不说胡话」。本期 10 篇精选 + 元启毒舌点评，带你 15 分钟看懂 AI 圈最新动态。</p>
+    <p>Google 发布 Gemini Omni 全模态模型，Anthropic 估值 1.2 万亿首次反超 OpenAI，Meta 裁员后用员工数据练 AI 引争议。本期 10 篇精选 + 元启毒舌点评，带你 15 分钟看懂 AI 圈最新动态。</p>
     <div class="overview-stats">
       <span class="overview-stat"><span class="num">10</span> 篇文章</span>
       <span class="overview-stat"><span class="num">约 15 分钟</span> 读完</span>
@@ -549,16 +539,16 @@ body::after {
   <nav class="toc" aria-label="文章目录">
     <div class="toc-title">📋 快速导航</div>
     <ul class="toc-list">
-      <li class="toc-item"><span class="toc-num">1</span><a href="#art-1">Anthropic 估值 9650 亿美元超 OpenAI</a></li>
-      <li class="toc-item"><span class="toc-num">2</span><a href="#art-2">字节跳动豪掷 700 亿美元建 AI 基建</a></li>
-      <li class="toc-item"><span class="toc-num">3</span><a href="#art-3">Google I/O 发布 Gemini Omni 全模态模型</a></li>
-      <li class="toc-item"><span class="toc-num">4</span><a href="#art-4">OpenAI GPT-5.5 Instant：专注「不说胡话」</a></li>
-      <li class="toc-item"><span class="toc-num">5</span><a href="#art-5">DeepSeek V4 多模态大升级</a></li>
-      <li class="toc-item"><span class="toc-num">6</span><a href="#art-6">Meta 裁员 7800 人 + 员工数据争议</a></li>
-      <li class="toc-item"><span class="toc-num">7</span><a href="#art-7">阿里 Qwen 3.7 Max 预览版发布</a></li>
-      <li class="toc-item"><span class="toc-num">8</span><a href="#art-8">Mistral Medium 3.5 发布</a></li>
-      <li class="toc-item"><span class="toc-num">9</span><a href="#art-9">5 月 AI 融资 250 亿美元</a></li>
-      <li class="toc-item"><span class="toc-num">10</span><a href="#art-10">字节 Seedance 2.0 免费接入豆包</a></li>
+      <li class="toc-item"><span class="toc-num">1</span><a href="#art-1">Google 发布 Gemini Omni 全模态模型</a></li>
+      <li class="toc-item"><span class="toc-num">2</span><a href="#art-2">Meta 裁员 7800 人，扎克伯格称员工数据练 AI 更佳</a></li>
+      <li class="toc-item"><span class="toc-num">3</span><a href="#art-3">阿里 Qwen 3.7 Max 预览版发布</a></li>
+      <li class="toc-item"><span class="toc-num">4</span><a href="#art-4">Anthropic 估值 1.2 万亿首次反超 OpenAI</a></li>
+      <li class="toc-item"><span class="toc-num">5</span><a href="#art-5">OpenAI GPT-5.5 Instant 发布</a></li>
+      <li class="toc-item"><span class="toc-num">6</span><a href="#art-6">DeepSeek V4 多模态升级：开源 + 百万上下文</a></li>
+      <li class="toc-item"><span class="toc-num">7</span><a href="#art-7">字节跳动 Seedance 2.0 全面接入豆包</a></li>
+      <li class="toc-item"><span class="toc-num">8</span><a href="#art-8">Gemini 3.5 Flash 发布：比竞品快 4 倍</a></li>
+      <li class="toc-item"><span class="toc-num">9</span><a href="#art-9">5 月 AI 融资 250 亿美元，基础设施受追捧</a></li>
+      <li class="toc-item"><span class="toc-num">10</span><a href="#art-10">Meta 与 AWS 合作 Graviton 芯片</a></li>
     </ul>
   </nav>
 
@@ -568,28 +558,39 @@ body::after {
   <div class="article-wrapper" id="art-1">
     <div class="article-divider">
       <span class="line"></span>
-      <span class="num">#1 · 资本运作</span>
+      <span class="num">#1 · 全模态模型</span>
       <span class="line-right"></span>
     </div>
     <article class="article-detailed headline">
       <div class="art-header">
-        <span class="art-tag">🌟 重磅</span>
-        <span class="art-date">2026-05-29</span>
+        <span class="art-tag">🌟 Google I/O</span>
+        <span class="art-date">2026-05-20</span>
         <span class="art-readtime">约 2 分钟</span>
       </div>
-      <h2><a href="https://www.benzinga.com/markets/private-markets/26/05/52859883/anthropic-hits-965-billion-valuation-latest-funding-round-surpassing-openai" target="_blank" rel="noopener">Anthropic 估值 9650 亿美元超 OpenAI：首次盈利 + 650 亿融资，Claude 母公司成 AI 新王</a></h2>
+      <h2><a href="https://news.qq.com/rain/a/20260520A07NI200" target="_blank" rel="noopener">Google 发布 Gemini Omni 全模态统一生成模型：视频/图像/文本/音频一次搞定</a></h2>
       <div class="art-summary">
-        <p>5 月 29 日最新消息，Anthropic 在新一轮融资中筹集 650 亿美元，估值飙升至 9650 亿美元（约 7 万亿人民币），正式超越 OpenAI 的 8520 亿美元估值。这是 Anthropic 继 5 月初在 Pre-IPO 市场报出 1.2 万亿隐含估值后的实锤融资——从「纸面富贵」变成了真金白银。Claude Code 在开发者圈爆发式增长，企业客户排队买单。Anthropic 还公布了 Q2 预计营收 109 亿美元，首次实现运营盈利 5.59 亿美元，成为首家正向造血的 AI 模型公司。AI 赛道的「双雄格局」正式形成：Anthropic 以安全可靠打企业市场，OpenAI 以生态规模保消费者阵地。</p>
+        <p>5 月 19 日 Google I/O 2026 大会上，Google DeepMind CEO 正式发布 Gemini Omni——一个统一的多模态 AI 模型，支持同时生成视频、图像、文本和音频。它能将物理世界理解（光影、运动、场景连贯性）与 Gemini 的知识能力结合，生成连贯的视频内容。内建 SynthID 数字水印防伪，可直接在 Gemini 应用中体验。实测显示其在连贯视频生成方面有突破性进展，但在某些场景下仍存在细节不一致的问题，被网友评价为「有点拉，但综合给到一个 NPC」。Gemini Omni 的发布标志着 AI 视频生成的「真假难辨」时代正式到来。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>统一多模态生成：一个模型同时输出视频、图像、文本、音频</li>
+          <li>内建 SynthID 数字水印防伪，物理世界理解能力突破</li>
+          <li>可在 Gemini 应用中直接体验，已全面开放</li>
+        </ul>
       </div>
       <div class="art-commentary">
-        <span class="comment-label">💡 元启划重点：</span> Anthropic 这波是真翻身了——不只是估值，更重要的是首次盈利了。Claude Code 确实好用，我天天用。但 9650 亿估值意味着上市预期已经打满了，再涨空间有限。想上车的建议等 IPO 后回调再入。
+        <span class="comment-label">💡 元启划重点：</span> 谷歌这是把「全能输出」四个字做到了一个模型里，视频版 Midjourney 终于来了。但实测评价有点拉胯——想法很性感，落地还得再等等。国内能不能用得打个问号。
       </div>
       <div class="art-sources">
-        <a href="https://www.benzinga.com/markets/private-markets/26/05/52859883/anthropic-hits-965-billion-valuation-latest-funding-round-surpassing-openai" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📰</span> Benzinga
+        <a href="https://news.qq.com/rain/a/20260520A07NI200" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> 腾讯新闻实测
         </a>
-        <a href="https://www.36kr.com/p/3799097984080899" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📄</span> 36氪解读
+        <a href="https://deepmind.google/models/gemini-omni/" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">🏠</span> Google DeepMind
+        </a>
+        <a href="https://www.36kr.com/p/3805677378674185" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> 36氪
         </a>
       </div>
     </article>
@@ -599,131 +600,7 @@ body::after {
   <div class="article-wrapper" id="art-2">
     <div class="article-divider">
       <span class="line"></span>
-      <span class="num">#2 · 基建军备</span>
-      <span class="line-right"></span>
-    </div>
-    <article class="article-detailed">
-      <div class="art-header">
-        <span class="art-tag">🌟 重磅</span>
-        <span class="art-date">2026-05-27</span>
-        <span class="art-readtime">约 2 分钟</span>
-      </div>
-      <h2><a href="https://www.ithome.com/0/956/043.htm" target="_blank" rel="noopener">字节跳动豪掷 700 亿美元建 AI 基建：两年烧 6 倍，4700 亿人民币的「军备竞赛」</a></h2>
-      <div class="art-summary">
-        <p>5 月 27 日彭博社报道，字节跳动正在内部讨论 2026 年资本开支最高提升至 700 亿美元（约 4750 亿元人民币），全部砸向数据中心和 AI 基础设施建设。这个数字较 2024 年的约 120 亿美元翻了近 6 倍。字节已与高通签订数百万颗 AI ASIC 芯片采购协议，并计划明年进一步上调至 1000 亿美元。作为国内最大的视频平台运营方和 AI 芯片采购方，字节的「军备竞赛」力度直接拉满了全球 AI 算力需求的天花板。张一鸣的这盘棋，赌的是整个公司的未来。</p>
-      </div>
-      <div class="art-commentary">
-        <span class="comment-label">💡 元启划重点：</span> 字节这是要做「AI 时代的中石油」啊——自己挖矿（算力）、自己炼油（模型）、自己卖（产品）。700 亿美金什么概念？比很多国家的军费还高。但烧钱速度也吓人，容错空间极小。押对了是下一个腾讯，押错了…不敢想。
-      </div>
-      <div class="art-sources">
-        <a href="https://www.ithome.com/0/956/043.htm" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📰</span> IT之家
-        </a>
-        <a href="https://www.huxiu.com/article/4862080.html" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📄</span> 虎嗅
-        </a>
-      </div>
-    </article>
-  </div>
-
-  <!-- #3 -->
-  <div class="article-wrapper" id="art-3">
-    <div class="article-divider">
-      <span class="line"></span>
-      <span class="num">#3 · 全模态模型</span>
-      <span class="line-right"></span>
-    </div>
-    <article class="article-detailed">
-      <div class="art-header">
-        <span class="art-tag">🌟 Google I/O</span>
-        <span class="art-date">2026-05-20</span>
-        <span class="art-readtime">约 2 分钟</span>
-      </div>
-      <h2><a href="https://news.qq.com/rain/a/20260520A07NI200" target="_blank" rel="noopener">Google 发布 Gemini Omni 全模态统一生成模型：视频/图像/文本/音频一次搞定</a></h2>
-      <div class="art-summary">
-        <p>5 月 19 日 Google I/O 2026 大会上，Google DeepMind CEO 正式发布 Gemini Omni——一个统一的多模态 AI 模型，支持同时生成视频、图像、文本和音频。它能将物理世界理解（光影、运动、场景连贯性）与 Gemini 的知识能力结合，生成连贯的视频内容。内建 SynthID 数字水印防伪。实测评价两极：想法突破性，但落地细节还差火候。被网友评价为「有点拉，但综合给到一个 NPC」。Gemini Omni 的发布标志着 AI 视频生成正式进入多模态统一输出时代，但距离真正「可用」还有距离。</p>
-      </div>
-      <div class="art-commentary">
-        <span class="comment-label">💡 元启划重点：</span> Google 终于把「全能输出」做进一个模型了，方向对了。但实测有点拉胯——细节处理还不行。而且懂的都懂，Google 产品能不能真正落地是个玄学。国内能用吗？先打个问号。
-      </div>
-      <div class="art-sources">
-        <a href="https://news.qq.com/rain/a/20260520A07NI200" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📰</span> 腾讯新闻实测
-        </a>
-        <a href="https://deepmind.google/models/gemini-omni/" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">🏠</span> Google DeepMind
-        </a>
-      </div>
-    </article>
-  </div>
-
-  <!-- #4 -->
-  <div class="article-wrapper" id="art-4">
-    <div class="article-divider">
-      <span class="line"></span>
-      <span class="num">#4 · 模型更新</span>
-      <span class="line-right"></span>
-    </div>
-    <article class="article-detailed">
-      <div class="art-header">
-        <span class="art-tag"># OpenAI</span>
-        <span class="art-date">2026-05-06</span>
-        <span class="art-readtime">约 1.5 分钟</span>
-      </div>
-      <h2><a href="https://techcrunch.com/2026/04/23/openai-chatgpt-gpt-5-5-ai-model-superapp/" target="_blank" rel="noopener">OpenAI 发布 GPT-5.5 Instant：更快更可靠的新默认模型，幻觉减少 60%</a></h2>
-      <div class="art-summary">
-        <p>OpenAI 于 5 月 6 日推出 GPT-5.5 Instant，作为 ChatGPT 的新默认模型。该模型 SWE-bench 测试成绩达到 88.7%，在法律、医学、金融等敏感领域显著减少 AI 幻觉（减少 60%），响应速度也更快。GPT-5.5 不再盲目追求能力上限，而是聚焦生产环境的真实需求——让 AI 少「胡说八道」。GPT-5.6 内部测试代码已被曝光。被 Anthropic 追着打的 OpenAI 不敢有丝毫松懈，产品迭代全面提速。</p>
-      </div>
-      <div class="art-commentary">
-        <span class="comment-label">💡 元启划重点：</span> GPT-5.5 没啥大惊喜，主要就是修「胡说八道」的老毛病。但对企业用户这是大好事——谁也不想 AI 给你写合同写到一半开始编法条。GPT-5.6 已经在路上了，卷起来受益的是用户。
-      </div>
-      <div class="art-sources">
-        <a href="https://techcrunch.com/2026/04/23/openai-chatgpt-gpt-5-5-ai-model-superapp/" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📰</span> TechCrunch
-        </a>
-        <a href="https://www.ai.cc/zh/blogs/gpt-5-5-everything-you-need-to-know/" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📄</span> AICC 评测
-        </a>
-      </div>
-    </article>
-  </div>
-
-  <!-- #5 -->
-  <div class="article-wrapper" id="art-5">
-    <div class="article-divider">
-      <span class="line"></span>
-      <span class="num">#5 · 开源模型</span>
-      <span class="line-right"></span>
-    </div>
-    <article class="article-detailed">
-      <div class="art-header">
-        <span class="art-tag"># 开源</span>
-        <span class="art-date">2026-05-03</span>
-        <span class="art-readtime">约 1.5 分钟</span>
-      </div>
-      <h2><a href="https://cloud.tencent.com/developer/article/2663824" target="_blank" rel="noopener">DeepSeek V4 多模态大升级：开源 + 百万上下文 + 白菜价，中小团队直接抄作业</a></h2>
-      <div class="art-summary">
-        <p>DeepSeek V4 系列迎来重大多模态升级，新版本原生支持文本、图像、视频多模态处理，标配百万级上下文窗口。采用创新 MoE 架构与 CSA+HCA 混合压缩注意力技术，V4-Pro 版本性能媲美顶级闭源模型。继续开源策略，在 GitHub 和 Hugging Face 全面开放。API 价格仅为 GPT-5 的 1/18。DeepSeek 成为首个在开源模型中实现「多模态 + 超长上下文 + 极致性价比」三重能力的选手，国内中小开发者和企业反应热烈。</p>
-      </div>
-      <div class="art-commentary">
-        <span class="comment-label">💡 元启划重点：</span> DeepSeek 真的卷疯了——开源、多模态、超长上下文、白菜价全配齐。国内能用还便宜，中小团队直接拿来干活。唯一的灵魂拷问：这价格能撑多久？先薅再说，别等涨价了后悔。
-      </div>
-      <div class="art-sources">
-        <a href="https://cloud.tencent.com/developer/article/2663824" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📄</span> 腾讯云解析
-        </a>
-        <a href="https://www.deepseek.com" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">🏠</span> DeepSeek 官网
-        </a>
-      </div>
-    </article>
-  </div>
-
-  <!-- #6 -->
-  <div class="article-wrapper" id="art-6">
-    <div class="article-divider">
-      <span class="line"></span>
-      <span class="num">#6 · 人事重组</span>
+      <span class="num">#2 · 人事重组</span>
       <span class="line-right"></span>
     </div>
     <article class="article-detailed">
@@ -734,10 +611,18 @@ body::after {
       </div>
       <h2><a href="https://finance.sina.com.cn/tech/roll/2026-05-26/doc-inhzequv2353271.shtml" target="_blank" rel="noopener">Meta 裁员约 7800 人，扎克伯格称「利用员工数据训练 AI 效果更佳」</a></h2>
       <div class="art-summary">
-        <p>Meta 在 4 月宣布裁减约 10% 的员工，波及约 7800 人。5 月 26 日更多内部细节被曝光。与多数企业在裁员后低调处理不同，扎克伯格在裁员同日公开表示，利用员工日常工作数据来训练 AI 模型效果显著优于合成数据或公开数据集。这场牵涉近 8000 个岗位的裁员行动，背后是一次以 AI 为核心逻辑的全面组织再造——约 7000 名员工转岗至 AI 相关团队。也引发了关于员工数据隐私和伦理边界的广泛讨论。</p>
+        <p>Meta 在 4 月宣布裁减约 10% 的员工，波及约 7800 人。5 月 26 日更多内部细节被曝光。与多数企业在裁员后低调处理不同，扎克伯格在裁员同日公开表示，利用员工日常工作数据来训练 AI 模型效果显著优于合成数据或公开数据集。这场牵涉近 8000 个岗位的裁员行动，背后是一次以 AI 为核心逻辑的全面组织再造——约 7000 名员工转岗至 AI 相关团队，管理层也经历大幅调整。然而这一做法也引发了关于员工数据隐私和伦理边界的广泛讨论，多个员工团体表示关注。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>Meta 裁员约 7800 人（约 10%），同时约 7000 人转岗至 AI 团队</li>
+          <li>扎克伯格称员工数据训练 AI 效果优于合成数据，引发隐私伦理争议</li>
+          <li>裁员背后是 Meta 以 AI 为核心逻辑的全面组织再造</li>
+        </ul>
       </div>
       <div class="art-commentary">
-        <span class="comment-label">💡 元启划重点：</span> 裁了你还要用你的数据练 AI——扎克伯格这是把「吃干抹净」玩到极致了。合法但不体面，员工心里不骂才怪。但说真的，员工日常工作数据的质量确实比网上爬的好。就是吃相太难看了。
+        <span class="comment-label">💡 元启划重点：</span> 裁了你还要用你的数据练 AI，扎克伯格这是把「吃干抹净」玩到极致了。合法但不体面，员工心里不骂才怪。不过说实话，这数据质量确实比网上爬的好——就是吃相太难看了。
       </div>
       <div class="art-sources">
         <a href="https://finance.sina.com.cn/tech/roll/2026-05-26/doc-inhzequv2353271.shtml" target="_blank" rel="noopener" class="art-source-link">
@@ -750,11 +635,11 @@ body::after {
     </article>
   </div>
 
-  <!-- #7 -->
-  <div class="article-wrapper" id="art-7">
+  <!-- #3 -->
+  <div class="article-wrapper" id="art-3">
     <div class="article-divider">
       <span class="line"></span>
-      <span class="num">#7 · 模型发布</span>
+      <span class="num">#3 · 模型发布</span>
       <span class="line-right"></span>
     </div>
     <article class="article-detailed">
@@ -763,12 +648,20 @@ body::after {
         <span class="art-date">2026-05-19</span>
         <span class="art-readtime">约 1.5 分钟</span>
       </div>
-      <h2><a href="https://zhuanlan.zhihu.com/p/2040019418453914533" target="_blank" rel="noopener">阿里 Qwen 3.7 Max 预览版发布：发模型跟发朋友圈一样勤快</a></h2>
+      <h2><a href="https://zhuanlan.zhihu.com/p/2040019418453914533" target="_blank" rel="noopener">阿里 Qwen 3.7 Max 预览版发布：通义千问两代超大杯并行迭代</a></h2>
       <div class="art-summary">
-        <p>5 月 19 日，阿里云发布 Qwen 3.7 Max 预览版，同步并行迭代 Qwen3 系列。进入 Qwen3 时代后模型迭代明显加速，在推理、代码生成、多模态能力上均有提升。网友调侃：「还没讨论完上一个模型，下一个模型预告片就自动播放了」。阿里在开源社区继续以「卷王」姿态示人，但名字越来越绕——3.7 Max 是什么命名哲学？不过开源就是好东西，拿来试试不亏。</p>
+        <p>5 月 19 日，阿里云发布 Qwen 3.7 Max 预览版，同步并行迭代 Qwen3 系列模型。这是通义千问家族的又一里程碑，在多个基准测试中表现亮眼。进入 Qwen3 时间后，模型迭代明显提速——网友调侃「还没讨论完上一个模型，下一个模型预告片就自动播放了」。阿里在开源大模型领域的迭代速度明显加速，Qwen 3.7 Max 在推理、代码生成和多模态能力上均有显著提升，延续了阿里在开源社区的「卷王」姿态。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>Qwen 3.7 Max 预览版发布，同步并行迭代 Qwen3 系列</li>
+          <li>推理、代码和多模态能力显著提升，迭代速度明显加速</li>
+          <li>延续开源策略，阿里正成为开源大模型领域的「卷王」</li>
+        </ul>
       </div>
       <div class="art-commentary">
-        <span class="comment-label">💡 元启划重点：</span> 阿里发模型速度确实猛，但名字越来越绕了——3.7 Max 到底是什么鬼？反正开源的就是好东西，拿来试试不亏。不过说实话，跟 DeepSeek 比，Qwen 在开发者里的话题度差了一截。
+        <span class="comment-label">💡 元启划重点：</span> 阿里现在发模型跟发朋友圈似的，三天两头来一个。Qwen 3.7 Max 能力不差，但名字越来越绕——3.7 Max 是什么鬼命名？反正开源的就是好东西，值得关注。
       </div>
       <div class="art-sources">
         <a href="https://zhuanlan.zhihu.com/p/2040019418453914533" target="_blank" rel="noopener" class="art-source-link">
@@ -781,32 +674,196 @@ body::after {
     </article>
   </div>
 
-  <!-- #8 -->
-  <div class="article-wrapper" id="art-8">
+  <!-- #4 -->
+  <div class="article-wrapper" id="art-4">
     <div class="article-divider">
       <span class="line"></span>
-      <span class="num">#8 · 欧洲力量</span>
+      <span class="num">#4 · 资本运作</span>
       <span class="line-right"></span>
     </div>
     <article class="article-detailed">
       <div class="art-header">
-        <span class="art-tag"># Mistral</span>
+        <span class="art-tag">🌟 重磅</span>
         <span class="art-date">2026-05-07</span>
-        <span class="art-readtime">约 1.5 分钟</span>
+        <span class="art-readtime">约 2 分钟</span>
       </div>
-      <h2><a href="https://news.qq.com/rain/a/20260507A07NIT00" target="_blank" rel="noopener">Mistral Medium 3.5 发布：欧洲 AI 的「三合一」模型，128B 稠密架构 + 256K 上下文</a></h2>
+      <h2><a href="https://www.36kr.com/p/3799097984080899" target="_blank" rel="noopener">Anthropic 估值飙升至 1.2 万亿美元，首次反超 OpenAI</a></h2>
       <div class="art-summary">
-        <p>5 月 7 日，法国 AI 公司 Mistral 发布 Medium 3.5——128B 稠密架构、256K 上下文窗口，首次将指令遵循、推理与编码能力融合进单一模型。定位介于旗舰 Large 和轻量 Small 之间，对标 GPT-5.5 的中端市场。Mistral 以 140 亿美元估值入选 Forbes AI 50，是欧洲 AI 赛道仅存的「种子选手」。在中美大模型夹击下，欧洲 AI 的生存空间越来越小，Mistral 的差异化路线——开源 + 隐私优先——是它唯一的护城河。</p>
+        <p>5 月 7 日，Anthropic 在链上 Pre-IPO 市场的隐含估值飙升至 1.2 万亿美元（约合 8.7 万亿人民币），首次超越 OpenAI 此前的 8520 亿美元估值。这家曾经一直笼罩在 OpenAI 阴影下的「二号选手」，终于实现了估值上的反超。这一估值飙升源于 Claude 系列在企业市场的强劲表现，尤其是 Claude Code 在开发者群体中的爆发式增长和企业级部署的加速。Anthropic 正在寻求新一轮约 300 亿美元融资，投后估值约 9000 亿美元。Anthropic 还公布了 Q2 预计营收 109 亿美元，首次实现运营盈利 5.59 亿美元，成为首家正向造血的 AI 模型公司。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>Pre-IPO 隐含估值 1.2 万亿美元，首次超越 OpenAI 的 8520 亿</li>
+          <li>Q2 营收预计 109 亿美元，环比增长 127%，首次运营盈利</li>
+          <li>Claude Code 和企业级部署是增长核心引擎</li>
+        </ul>
       </div>
       <div class="art-commentary">
-        <span class="comment-label">💡 元启划重点：</span> Mistral 作为欧洲唯一的「种子选手」，能在中美夹缝中活下来已经很不容易了。Medium 3.5 定位聪明——不做最贵的，做性价比最优的。但说实话，在 DeepSeek 和 Qwen 的夹击下，欧洲选手的生存空间越来越小了。且看且珍惜。
+        <span class="comment-label">💡 元启划重点：</span> 「二号选手」终于翻身了，Anthropic 这波估值反超是真硬核——不是炒作，是真有企业客户买单。但 1.2 万亿是 Pre-IPO 市场的报价，上市后能不能撑住还两说。Claude Code 确实好用，建议没试过的赶紧体验。
       </div>
       <div class="art-sources">
-        <a href="https://news.qq.com/rain/a/20260507A07NIT00" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📰</span> 腾讯新闻
+        <a href="https://www.36kr.com/p/3799097984080899" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> 36氪
         </a>
-        <a href="https://mistral.ai/" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">🏠</span> Mistral AI
+        <a href="https://baijiahao.baidu.com/s?id=1865806522268023955" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> 华尔街日报/百家号
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- #5 -->
+  <div class="article-wrapper" id="art-5">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#5 · 模型更新</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed">
+      <div class="art-header">
+        <span class="art-tag"># OpenAI</span>
+        <span class="art-date">2026-05-06</span>
+        <span class="art-readtime">约 1.5 分钟</span>
+      </div>
+      <h2><a href="https://techcrunch.com/2026/04/23/openai-chatgpt-gpt-5-5-ai-model-superapp/" target="_blank" rel="noopener">OpenAI 发布 GPT-5.5 Instant：更快更可靠的新默认模型，幻觉减少 60%</a></h2>
+      <div class="art-summary">
+        <p>OpenAI 于 5 月 6 日推出 GPT-5.5 Instant，作为 ChatGPT 的新默认模型。该模型 SWE-bench 测试成绩达到 88.7%，在法律、医学、金融等敏感领域显著减少了 AI 幻觉现象（减少 60%），响应速度也更快。GPT-5.5 的亮点在于「更快 + 更可靠」的实用主义路线——不再盲目追求能力上限，而是聚焦生产环境的真实需求。值得注意的是，GPT-5.6 的内部测试代码已被曝光，开发进度全面提速。OpenAI 被 Anthropic 追赶，不敢有丝毫松懈。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>GPT-5.5 Instant 成为 ChatGPT 新默认模型，SWE-bench 88.7%</li>
+          <li>幻觉减少 60%，「更快 + 更可靠」的实用主义路线</li>
+          <li>GPT-5.6 内部测试代码已曝光，OpenAI 被 Anthropic 追赶不敢躺平</li>
+        </ul>
+      </div>
+      <div class="art-commentary">
+        <span class="comment-label">💡 元启划重点：</span> GPT-5.5 少了点惊喜，主要是修「胡说八道」的毛病。但这恰恰说明 OpenAI 开始认真对待可靠性了，对企业客户是好事。GPT-5.6 已经在路上——OpenAI 被 Anthropic 追着打，不敢躺平。卷起来受益的是用户。
+      </div>
+      <div class="art-sources">
+        <a href="https://techcrunch.com/2026/04/23/openai-chatgpt-gpt-5-5-ai-model-superapp/" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> TechCrunch
+        </a>
+        <a href="https://www.ai.cc/zh/blogs/gpt-5-5-everything-you-need-to-know/" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> AICC 评测
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- #6 -->
+  <div class="article-wrapper" id="art-6">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#6 · 开源模型</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed">
+      <div class="art-header">
+        <span class="art-tag"># 开源</span>
+        <span class="art-date">2026-05-03</span>
+        <span class="art-readtime">约 1.5 分钟</span>
+      </div>
+      <h2><a href="https://cloud.tencent.com/developer/article/2663824" target="_blank" rel="noopener">DeepSeek V4 多模态版本发布：原生支持图文视频，百万级上下文，价格仅为 GPT 的 1/18</a></h2>
+      <div class="art-summary">
+        <p>DeepSeek V4 系列迎来重大多模态升级，新版本原生支持文本、图像、视频多模态处理，标配百万级上下文窗口。采用创新 MoE 架构与 CSA+HCA 混合压缩注意力技术，V4-Pro 版本性能媲美顶级闭源模型。新版本继续沿用开源策略，在 GitHub 和 Hugging Face 全面开放。API 价格仅为 GPT-5 的 1/18。这一升级使 DeepSeek 成为首个在开源模型中实现「多模态 + 超长上下文 + 极致性价比」三重能力的选手。国内中小开发者和企业对此反应热烈。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>原生支持文本/图像/视频多模态，百万级上下文窗口</li>
+          <li>MoE + CSA/HCA 混合压缩注意力，V4-Pro 媲美顶级闭源模型</li>
+          <li>开源 + API 价格仅为 GPT 的 1/18，中小团队福音</li>
+        </ul>
+      </div>
+      <div class="art-commentary">
+        <span class="comment-label">💡 元启划重点：</span> DeepSeek 是真的卷到底了——开源、多模态、超长上下文、白菜价全配齐。国内能用还便宜，中小团队直接抄作业。唯一的问题：这价格能持续多久？先薅再说，别等涨价了后悔。
+      </div>
+      <div class="art-sources">
+        <a href="https://cloud.tencent.com/developer/article/2663824" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> 腾讯云解析
+        </a>
+        <a href="https://www.deepseek.com" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">🏠</span> DeepSeek 官网
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- #7 -->
+  <div class="article-wrapper" id="art-7">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#7 · 视频生成</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed">
+      <div class="art-header">
+        <span class="art-tag"># 字节跳动</span>
+        <span class="art-date">2026-05-27</span>
+        <span class="art-readtime">约 1.5 分钟</span>
+      </div>
+      <h2><a href="https://www.doubao.com/" target="_blank" rel="noopener">字节跳动 Seedance 2.0 全面接入豆包：AI 视频走向大众消费级</a></h2>
+      <div class="art-summary">
+        <p>字节跳动旗下的 Seedance 2.0 视频生成模型现已全面接入豆包 AI 助手，用户可直接在豆包中免费使用文本生成视频功能。Seedance 2.0 在视频质量、连贯性和生成速度方面较前代显著提升，支持写实、动画、科幻等多种视觉风格。字节跳动还推出了「火山剧创」AI 漫剧工具，结合豆包大模型进行剧本创作、分镜解析和对白生成，形成完整的 AI 视频创作链路。即梦 AI 平台也同步集成了这一能力，用户只需输入文字描述即可在数分钟内获得完整短视频。AI 视频生成正在从专业工具走向大众消费级应用。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>Seedance 2.0 全面接入豆包，用户可免费文生视频，支持多种视觉风格</li>
+          <li>「火山剧创」工具链覆盖剧本→分镜→对白全流程</li>
+          <li>即梦 AI 平台同步集成，AI 视频从专业工具走向大众消费级应用</li>
+        </ul>
+      </div>
+      <div class="art-commentary">
+        <span class="comment-label">💡 元启划重点：</span> 字节这是要把 AI 视频塞到每个抖音用户手里。Seedance 2.0 在豆包里免费，门槛直接打到零。视频创作者要睡不着了——以前一个团队干的事，现在一个人加个 prompt 搞定。赶紧学起来，不学就被淘汰了。
+      </div>
+      <div class="art-sources">
+        <a href="https://www.doubao.com/" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📄</span> 豆包官网
+        </a>
+        <a href="https://jimeng.jianying.com/ai-tool/home" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">🎬</span> 即梦AI
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- #8 -->
+  <div class="article-wrapper" id="art-8">
+    <div class="article-divider">
+      <span class="line"></span>
+      <span class="num">#8 · 极速推理</span>
+      <span class="line-right"></span>
+    </div>
+    <article class="article-detailed">
+      <div class="art-header">
+        <span class="art-tag">🌟 Google I/O</span>
+        <span class="art-date">2026-05-19</span>
+        <span class="art-readtime">约 1.5 分钟</span>
+      </div>
+      <h2><a href="https://m.163.com/dy/article/KTDGNR4F0511CQ7I.html" target="_blank" rel="noopener">Gemini 3.5 Flash 发布：比竞品快 4 倍，Agent 任务性能 83.6%</a></h2>
+      <div class="art-summary">
+        <p>Google I/O 2026 同期发布 Gemini 3.5 Flash，生成输出 Token 速度约为其他前沿模型的 4 倍，Agent 任务性能提升至 83.6%，专为 AI Agent 和编码工具等场景优化。在多项基准测试中超越 Gemini 3.1 Pro。同时发布了 Gemini Spark——可 24 小时运行在谷歌云上的个人 AI 代理，深度整合 Gmail、Calendar、Docs 等生态，实现跨应用的自主任务执行。Google 还展示了 Project Mariner 等先锋项目，标志着谷歌全面进入「智能体 Gemini 时代」。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>Gemini 3.5 Flash 生成速度约为竞品 4 倍，Agent 任务性能 83.6%</li>
+          <li>Gemini Spark 可 24 小时云端运行，深度整合 Google 生态全家桶</li>
+          <li>Project Mariner 等项目展示 AI Agent 未来路线图</li>
+        </ul>
+      </div>
+      <div class="art-commentary">
+        <span class="comment-label">💡 元启划重点：</span> Google 这次 I/O 真不画饼了，东西都是能用的。Gemini Spark 才是真正的主角——24 小时在云上跑的 AI 代理，对标的是 Agent 赛道。但 Google 的产品落地速度…懂的都懂。能不能干过 Anthropic 和 OpenAI 还两说。
+      </div>
+      <div class="art-sources">
+        <a href="https://m.163.com/dy/article/KTDGNR4F0511CQ7I.html" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> 网易科技
+        </a>
+        <a href="https://deepmind.google/models/gemini/" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">🏠</span> Google DeepMind
         </a>
       </div>
     </article>
@@ -825,12 +882,20 @@ body::after {
         <span class="art-date">2026-05-20</span>
         <span class="art-readtime">约 1.5 分钟</span>
       </div>
-      <h2><a href="https://inforcapital.com/blog/2026-05-09-ai-startup-funding-surges-in-may-37-deals-and-25-billion-as-investors-double-down-on-machine-learning/" target="_blank" rel="noopener">5 月 AI 融资 250 亿美元：资本不赌大模型了，改赌基础设施</a></h2>
+      <h2><a href="https://inforcapital.com/blog/2026-05-09-ai-startup-funding-surges-in-may-37-deals-and-25-billion-as-investors-double-down-on-machine-learning/" target="_blank" rel="noopener">5 月 AI 融资热潮：37 笔交易 250 亿美元，资本从「卷模型」转向「卷基础设施」</a></h2>
       <div class="art-summary">
-        <p>2026 年 5 月 AI 融资数据出炉：82 笔总融资信号中 37 笔涉及 AI，披露金额 250 亿美元。资本风向从「卷大模型」转向「卷基础设施」——AI 芯片、模型聚合平台、算力服务商成为最大赢家。OpenRouter 融资 1.13 亿美元、多家推理初创公司完成大额融资。投资逻辑从「赌下一个 GPT」变成「给淘金者卖铲子」——基础设施赛道的确定性远高于模型赛道。VC 市场的共识是：谁掌握算力基础设施，谁就掌握了 AI 时代的命脉。</p>
+        <p>2026 年 5 月，AI 初创公司融资活动持续高涨。据统计，在 82 笔总融资信号中，37 笔涉及 AI/机器学习领域，披露金额达 250 亿美元。资本风向正在从「卷模型」转向「卷基础设施」——AI 芯片、模型聚合平台、算力服务商成为最大赢家。OpenRouter 融资 1.13 亿美元是这一趋势的典型代表。风险投资家的兴趣转向更务实的方向：企业级 AI 应用、推理基础设施和垂直行业解决方案。VC 市场在 5 月 20 日当周继续反映「从投机狂热转向务实的企业级效用」的趋势。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>5 月 37 笔 AI 融资交易，披露金额 250 亿美元</li>
+          <li>资本风向从卷模型转向卷基础设施：芯片、聚合平台、算力服务</li>
+          <li>OpenRouter 融资 1.13 亿美元，AI 基础设施层受资本热捧</li>
+        </ul>
       </div>
       <div class="art-commentary">
-        <span class="comment-label">💡 元启划重点：</span> 资本学聪明了——不赌大模型谁赢，改赌谁给大模型卖水。OpenRouter 这种「模型路由器」拿了 1.13 亿就是证据。但基础设施赛道也卷得离谱，最后活下来的不会太多。投资人的钱也不是大风刮来的。
+        <span class="comment-label">💡 元启划重点：</span> 资本的钱还是往 AI 砸，但风向变了——不赌大模型了，改赌基础设施。OpenRouter 这种「卖水人」拿了 1.13 亿，说明投资人也学聪明了。但基础设施赛道也卷得离谱，最后活下来的不会太多。
       </div>
       <div class="art-sources">
         <a href="https://inforcapital.com/blog/2026-05-09-ai-startup-funding-surges-in-may-37-deals-and-25-billion-as-investors-double-down-on-machine-learning/" target="_blank" rel="noopener" class="art-source-link">
@@ -847,28 +912,36 @@ body::after {
   <div class="article-wrapper" id="art-10">
     <div class="article-divider">
       <span class="line"></span>
-      <span class="num">#10 · 视频生成</span>
+      <span class="num">#10 · 芯片布局</span>
       <span class="line-right"></span>
     </div>
     <article class="article-detailed">
       <div class="art-header">
-        <span class="art-tag"># 字节跳动</span>
-        <span class="art-date">2026-05-27</span>
+        <span class="art-tag"># 算力</span>
+        <span class="art-date">2026-04-27</span>
         <span class="art-readtime">约 1.5 分钟</span>
       </div>
-      <h2><a href="https://www.doubao.com/" target="_blank" rel="noopener">字节跳动 Seedance 2.0 免费接入豆包：AI 视频门槛打到零</a></h2>
+      <h2><a href="https://about.fb.com/news/category/technologies/meta/" target="_blank" rel="noopener">Meta 与 AWS 合作 Graviton 芯片发力 AI 推理，从「单靠 NVIDIA」走向芯片多元化</a></h2>
       <div class="art-summary">
-        <p>字节跳动 Seedance 2.0 视频生成模型全面接入豆包 AI 助手，用户可直接免费文生视频。支持写实、动画、科幻等多种风格。字节同步推出「火山剧创」AI 漫剧工具，覆盖剧本→分镜→对白全流程。即梦 AI 平台也已集成该能力。以前一个团队干的事，现在一个人加个 prompt 搞定。AI 视频正在从专业工具走向大众消费级应用，而字节跳动的打法依然是「免费 + 低门槛 + 大流量」三件套。</p>
+        <p>4 月 27 日，Meta 宣布与 AWS 在 Graviton 芯片上达成合作，将使用 AWS 自研的 ARM 架构 Graviton 处理器来支撑其 AI Agent 工作负载。这标志着 Meta 正从「高度依赖 NVIDIA GPU」转向「自研 + 多方合作」的多元化芯片战略。同时，Meta 还在推进太空太阳能和长时储能项目以解决 AI 计算的能源需求问题——AI 的算力消耗正在倒逼能源创新。Graviton 芯片以低功耗著称，将用于 Meta 的 AI 推理服务，与 NVIDIA H100 形成互补。</p>
+      </div>
+      <div class="art-keypoints">
+        <div class="kp-title">关键要点</div>
+        <ul>
+          <li>Meta 与 AWS 合作 Graviton 芯片用于 AI 推理，摆脱对 NVIDIA 单一依赖</li>
+          <li>Meta 同步推进太空太阳能和长时储能，解决 AI 电力需求</li>
+          <li>Graviton 低功耗 ARM 芯片与 NVIDIA H100 形成互补布局</li>
+        </ul>
       </div>
       <div class="art-commentary">
-        <span class="comment-label">💡 元启划重点：</span> 字节这是要把 AI 视频塞到每个抖音用户手里。免费 + 免安装，门槛直接打到零。视频创作者真的要睡不着了。但话说回来，Seedance 2.0 生成的视频质量跟专业制作还有距离——别急着把团队裁了。
+        <span class="comment-label">💡 元启划重点：</span> Meta 不想被英伟达卡脖子，开始搞「全家桶」芯片战略了。AWS 的 Graviton 走的是 ARM 路线，省电但性能跟 H100 比差远了。Meta 这招是「广撒网」，但短期内该买的 H100 一张也少不了。看看就好，不一定是利好。
       </div>
       <div class="art-sources">
-        <a href="https://www.doubao.com/" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">📄</span> 豆包官网
+        <a href="https://about.fb.com/news/category/technologies/meta/" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">📰</span> Meta Newsroom
         </a>
-        <a href="https://jimeng.jianying.com/ai-tool/home" target="_blank" rel="noopener" class="art-source-link">
-          <span class="src-icon">🎬</span> 即梦AI
+        <a href="https://aws.amazon.com/graviton/" target="_blank" rel="noopener" class="art-source-link">
+          <span class="src-icon">🔌</span> AWS Graviton
         </a>
       </div>
     </article>
