@@ -353,6 +353,9 @@ body::before {
 .subscribe-card .sub-desc {
   font-size: 15px; color: var(--text-secondary); margin-bottom: 28px;
 }
+.subscribe-card .sub-social {
+  font-size: 14px; color: #818cf8; margin-bottom: 20px; font-weight: 500;
+}
 .subscribe-card form {
   display: flex; gap: 10px;
   max-width: 460px; margin: 0 auto;
@@ -470,7 +473,7 @@ body::before {
   <!-- Nav -->
   <nav class="nav">
     <div class="nav-brand">bestai.cool</div>
-    <div class="nav-tag">📬 每早推送</div>
+    <div class="nav-tag">📬 每天中午推送</div>
   </nav>
 
   <!-- Hero -->
@@ -484,7 +487,7 @@ body::before {
       <span class="rotating">不堆术语 · 不贩卖焦虑 · 只说人话</span>
     </p>
     <a href="#subscribe" class="hero-cta">
-      ✨ 免费订阅
+      ✨ 立即免费订阅 →
     </a>
     <div class="hero-stats">
       <div class="hero-stat">
@@ -617,16 +620,17 @@ body::before {
   <section class="subscribe-section" id="subscribe">
     <div class="subscribe-card">
       <div class="sub-icon">📬</div>
-      <h2>每天早上，AI 资讯直达邮箱</h2>
+      <h2>每天中午，AI 资讯直达邮箱</h2>
       <p class="sub-desc">留下邮箱，不错过任何重要动态</p>
+      <p class="sub-social">已有 <strong>4</strong> 位读者订阅 ✨</p>
       <form action="https://formsubmit.co/zhangyujie9023@gmail.com" method="POST" onsubmit="return doSubscribe(event)">
         <input type="hidden" name="_subject" value="📬 bestai.cool 新订阅者">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
         <input type="email" name="email" id="semail" placeholder="your@email.com" required>
-        <button type="submit" id="sbtn">免费订阅</button>
+        <button type="submit" id="sbtn">立即免费订阅 →</button>
       </form>
-      <div class="note" id="smsg">不卖邮箱 · 可随时退订</div>
+      <div class="note" id="smsg">🔒 不卖邮箱 · 不骚扰 · 一键退订</div>
     </div>
   </section>
 
@@ -667,14 +671,14 @@ async function doSubscribe(e) {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: 'email=' + encodeURIComponent(email)
     });
-    msg.innerHTML = '✅ 订阅成功！明天早上查收邮件';
+    msg.innerHTML = '🚀 今天12:30发车，查收邮箱！';
     msg.className = 'note success';
     document.getElementById('semail').value = '';
   } catch (err) {
-    msg.innerHTML = '✅ 订阅成功！明天早上查收邮件';
+    msg.innerHTML = '🚀 今天12:30发车，查收邮箱！';
     msg.className = 'note success';
   }
-  btn.disabled = false; btn.textContent = '免费订阅';
+  btn.disabled = false; btn.textContent = '立即免费订阅 →';
   return false;
 }
 </script>
