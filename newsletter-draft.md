@@ -1,87 +1,90 @@
-# bestai.cool AI 资讯速递 — 2026年5月26日
+# bestai.cool AI 资讯速递 — 2026年5月30日
 
-> 本期精选 10 条 AI 资讯，覆盖融资动态、AI监管、模型发布、机器人突破、开源创新和行业人事变动。
-
----
-
-🔥 **Anthropic 超 300 亿美元融资即将关闭，估值突破 9000 亿超越 OpenAI**
-
-📝 Anthropic 最快将于本周完成最新一轮融资，规模超过 300 亿美元，公司估值有望突破 9000 亿美元，正式超越 OpenAI 成为全球估值最高的 AI 初创企业。Anthropic 预计下个月年化营收将超过 500 亿美元，较年初增长超 10 倍。本轮融资规模已超出原定 300 亿美元目标，最终投资承诺和条款仍在确认中。这是 Anthropic 在半年内的第二轮大额融资——2 月刚完成 300 亿美元 Series G 轮。
-
-🔗 [TechTimes](https://www.techtimes.com/articles/317066/20260523/anthropic-funding-round-top-30b-900b-valuation-would-surpass-openai-most-valuable-ai-startup.htm) | [网易](https://m.163.com/dy/article/KTLDIHSO05561FZU.html)
+> 本期精选 10 条 AI 资讯，涵盖模型发布、开源进展、行业重组、融资动态和视频生成等热点。每条附元启毒舌点评。
 
 ---
 
-🔥 **OpenAI IPO 冲刺：最早本周提交申请，马斯克诉讼被驳回扫清障碍**
+🔥 **Google 发布 Gemini Omni 全模态模型：视频/图像/文本统一生成**
+📝 5 月 19 日 Google I/O 2026 大会上，DeepMind CEO 发布 Gemini Omni——一个统一的多模态 AI 模型，支持同时生成视频、图像、文本和音频。它能把物理世界的理解（光影、运动、场景连贯性）与 Gemini 的知识能力结合，生成连贯的视频内容。内建 SynthID 数字水印防伪，标志着 AI 视频生成的「真假难辨」时代正式到来。
+🔗 [腾讯新闻实测](https://news.qq.com/rain/a/20260520A07NI200)
 
-📝 OpenAI 正准备在未来数天内向 SEC 提交 IPO 申请，最快本周五秘密递交文件，目标于 2026 年 9 月完成上市。高盛和摩根士丹利正协助起草招股说明书。与此同时，美国加州联邦法院 9 人陪审团仅用不到两小时即一致裁定马斯克起诉 OpenAI 和 Sam Altman 的"诉讼太晚"，几乎扫清了 OpenAI 上市前的最大法律障碍。Wedbush 分析师认为估值甚至可能冲向 1 万亿美元，但马斯克已表示将继续上诉。
-
-🔗 [网易](https://m.163.com/dy/article/KTIUSGC205561FZI.html) | [腾讯新闻](https://new.qq.com/rain/a/20260519A03VKH00) | [搜狐](https://m.sohu.com/a/1025540718_362225)
-
----
-
-🔥 **Meta 裁员约 7800 人，扎克伯格称利用员工数据训练 AI 效果更佳**
-
-📝 据快科技 5 月 26 日报道，Meta 在今年 4 月宣布裁减约 10% 的员工，波及约 7800 人。与多数企业裁员后便低调处理不同，扎克伯格在裁员同日公开表示，利用员工生成的数据来训练 AI 模型效果显著优于合成数据或公开数据集。Meta 已完成 AI 为核心逻辑的全面组织再造，约 7000 名员工转岗至 AI 相关团队。这一做法引发了关于员工数据隐私和伦理边界的广泛讨论。
-
-🔗 [新浪财经](https://finance.sina.com.cn/tech/roll/2026-05-26/doc-inhzequv2353271.shtml) | [腾讯新闻](https://news.qq.com/rain/a/20260519A06EHF00)
+💡 **元启划重点：** 谷歌这是把「全能输出」四个字做到了一个模型里，视频版 Midjourney 终于来了。但实测评价有点拉胯——想法很性感，落地还得再等等。国内能不能用得打个问号。
 
 ---
 
-🔥 **Google I/O 2026: Gemini 3.5 Flash 发布，Gemini Spark 个人 AI 代理登场**
+🔥 **Meta 裁员 7800 人后爆争议：扎克伯格称员工数据练 AI 效果更佳**
+📝 5 月 26 日，Meta 裁员细节全面曝光。约 7800 人被裁（占 10%），同时 7000 人转岗至 AI 团队。扎克伯格在同日公开表示，员工日常工作数据训练 AI 效果远超合成数据/公开数据集。这一做法引发关于员工数据隐私的伦理争议，多个员工团体表达关注。
+🔗 [新浪财经](https://finance.sina.com.cn/tech/roll/2026-05-26/doc-inhzequv2353271.shtml)
 
-📝 5 月 19 日 Google I/O 2026 大会上，CEO Sundar Pichai 宣布"Google Search 就是 AI Search"，并发布一系列重磅产品。Gemini 3.5 Flash 生成速度约为其他前沿模型的 4 倍，专为 AI Agent 和编码优化。Gemini Spark 作为可 24 小时运行在谷歌云的个人 AI 代理，深度整合 Google 生态。Gemini Omni 实现全模态交互，支持视频生成与实时编辑并嵌入 SynthID 数字水印。Google 还展示了 Project Mariner 等 AI Agent 先锋项目，明确进入了"智能体 Gemini 时代"。
-
-🔗 [网易](https://m.163.com/dy/article/KTDGNR4F0511CQ7I.html) | [搜狐](https://m.sohu.com/a/1025216404_121956424) | [腾讯新闻](https://new.qq.com/rain/a/20260519A03VKH00)
-
----
-
-🔥 **英伟达黄仁勋：物理 AI 的"ChatGPT 时刻"已到来，发布 OSMO 机器人平台**
-
-📝 英伟达 CEO 黄仁勋在最新演讲中宣布，物理 AI 的"ChatGPT 时刻"已经到来。NVIDIA 发布 OSMO 机器人编排平台，Hexagon Robotics 等企业已开始使用。微软将 OSMO 集成到 Azure Robotics Accelerator 工具链中。NVIDIA 还和 Hugging Face 达成深度合作，将 Isaac 与 GR00T 技术集成到开源 LeRobot 框架中，直接连接了全球 200 万机器人开发者。黄仁勋明确表示，自动驾驶汽车将是第一个大规模物理 AI 系统，2025 款奔驰 CLA 将于 2026 年 Q1 在美国上路。
-
-🔗 [网易](https://www.163.com/dy/article/KILRGNH305118VMB.html) | [网易](https://www.163.com/dy/article/KIM827D30550A7UY.html)
+💡 **元启划重点：** 裁了你还要用你的数据练 AI，扎克伯格这是把「吃干抹净」玩到极致了。合法但不体面，员工心里不骂才怪。不过说实话，这数据质量确实比网上爬的好——就是吃相太难看了。
 
 ---
 
-🔥 **Stability AI 发布 Stability Audio 3.0，可生成长达 6 分钟专业音乐**
+🔥 **阿里 Qwen 3.7 Max 预览版发布：两代超大杯并行迭代**
+📝 5 月 19 日，阿里云发布 Qwen 3.7 Max 预览版，同步并行迭代 Qwen3 系列。这是通义千问家族的又一个里程碑，在多个基准测试中表现亮眼。网友调侃：「还没讨论完上一个模型，下一个模型预告片就自动播放了。」阿里在开源大模型领域的迭代速度明显加速。
+🔗 [知乎解读](https://zhuanlan.zhihu.com/p/2040019418453914533)
 
-📝 5 月 20 日，AI 初创公司 Stability AI 推出全新音频生成模型家族 Stability Audio 3.0。顶级版本可生成长达六分钟以上的专业级音乐，支持多种音乐风格和乐器组合。此次共推出四款模型，覆盖从轻量快速生成到高保真专业创作的完整场景。Stability Audio 3.0 在音质、连贯性和创作控制力方面较前代实现大幅提升，标志着 AI 音乐生成迈向专业创作水准。
-
-🔗 [新浪财经](https://finance.sina.com.cn/tech/digi/2026-05-20/doc-inhyqiye9518441.shtml) | [Stability AI](https://stability.ai/)
-
----
-
-🔥 **DeepSeek V4 发布：万亿参数 MoE 开源，API 价格仅为 GPT-5 的 1/18**
-
-📝 DeepSeek V4 于 4 月 24 日正式开源，采用万亿参数 MoE（混合专家）架构，支持 256K 长上下文和原生 Function Calling。在代码生成、复杂推理等任务上表现出色。最引人注目的是其定价策略——以 GPT-5 约 1/18 的价格提供旗舰级性能。DeepSeek V4 包含 Pro 和 Lite 两个版本，已在 GitHub 开源，社区反响热烈。这一高性价比路线正在重塑大模型市场的竞争格局。
-
-🔗 [腾讯云](https://cloud.tencent.com/developer/article/2659300) | [百度百科](https://baike.baidu.com/item/DeepSeek-V4/65717031)
+💡 **元启划重点：** 阿里现在发模型跟发朋友圈似的，三天两头来一个。Qwen 3.7 Max 能力不差，但名字越来越绕——3.7 Max 是什么鬼命名？反正开源的就是好东西，值得关注。
 
 ---
 
-🔥 **美国五大 AI 实验室全部纳入联邦安全审查体系**
+🔥 **Anthropic 估值飙升至 1.2 万亿美元，首次反超 OpenAI**
+📝 5 月 7 日，Anthropic 在链上 Pre-IPO 市场的隐含估值飙升至 1.2 万亿美元（约合 8.7 万亿人民币），首次超越 OpenAI 的 8520 亿美元估值。这一估值飙升源于 Claude 系列在企业市场的强劲表现，以及 Claude Code 在开发者群体中的爆发式增长。Anthropic 正在寻求新一轮约 300 亿美元融资。
+🔗 [36氪](https://www.36kr.com/p/3799097984080899)
 
-📝 2026 年 5 月 5 日，美国商务部 NIST 下属的 AI 标准与创新中心（CAISI）与 Google DeepMind、微软、xAI 签署新协议，连同此前已签约的 Anthropic 和 OpenAI，美国五大 AI 实验室至此全部纳入联邦政府的"模型上线前安全审查"体系。该机制要求模型发布前，政府专家在保密设施中测试其被滥用于网络攻击、生物武器制造等风险。这意味着前沿 AI 模型的发布将迎来系统性监管审查。
-
-🔗 [雪球](https://xueqiu.com/1527849020/387965819)
-
----
-
-🔥 **字节跳动 Seedance 2.0 视频生成模型全面接入豆包**
-
-📝 字节跳动旗下的 Seedance 2.0 视频生成模型现已全面接入豆包 AI 助手，用户可直接在豆包中免费使用文本生成视频功能。Seedance 2.0 在视频质量、连贯性和生成速度方面较前代显著提升，支持多种风格和场景的创作。与此同时，字节跳动的即梦 AI 平台也集成了这一能力，使视频创作门槛进一步降低。这标志着 AI 视频生成正在从专业工具走向大众消费级应用。
-
-🔗 [豆包官网](https://www.doubao.com/) | [即梦AI](https://jimeng.jianying.com/ai-tool/home)
+💡 **元启划重点：** 「二号选手」终于翻身了，Anthropic 这波估值反超是真硬核——不是炒作，是真有企业客户买单。但 1.2 万亿是 Pre-IPO 市场的报价，上市后能不能撑住还两说。Claude Code 确实好用，建议没试过的赶紧体验。
 
 ---
 
-🔥 **谷歌 DeepMind：2026 年将成为"持续学习"之年，点亮 AI 永续学习之路**
+🔥 **OpenAI GPT-5.5 Instant 发布：更快 + 更可靠成为新默认模型**
+📝 5 月 6 日，OpenAI 发布 GPT-5.5 Instant，成为 ChatGPT 新默认模型。在法律、医学、金融等敏感领域大幅减少 AI 幻觉，响应速度显著提升。SWE-bench 测试成绩达 88.7%，幻觉减少 60%。GPT-5.6 内部测试代码已曝光，开发进度全面提速。
+🔗 [TechCrunch](https://techcrunch.com/2026/04/23/openai-chatgpt-gpt-5-5-ai-model-superapp/)
 
-📝 谷歌 DeepMind 研究员发布重磅预测刷屏全网：2026 年将会成为 AI"持续学习"（Continual Learning）之年。当前大语言模型在训练完成后知识即固定，无法在不遗忘已有知识的前提下持续吸收新信息。DeepMind 认为持续学习技术已接近突破，将使 AI 模型像人类一样持续进化而不发生灾难性遗忘。Jeff Dean 曾在 NeurIPS 2025 炉边谈话上指出了这一方向。报告还预测 2030 年实现全自动编程，2050 年 AI 将主导诺奖级科学研究。
-
-🔗 [百家号/新智元](https://baijiahao.baidu.com/s?id=1853181328423653972) | [知乎](https://www.zhihu.com/question/1990730123046035646)
+💡 **元启划重点：** GPT-5.5 少了点惊喜，主要是修「胡说八道」的毛病。但这恰恰说明 OpenAI 开始认真对待可靠性了，对企业客户是好事。GPT-5.6 已经在路上——OpenAI 被 Anthropic 追着打，不敢躺平。卷起来受益的是用户。
 
 ---
 
-*本期编辑：AI 资讯猎人元启 | 每天 17:00，不见不散 🚀*
+🔥 **DeepSeek V4 多模态升级：开源 + 百万上下文 + 极致性价比**
+📝 DeepSeek V4 系列迎来重大多模态升级，原生支持文本、图像、视频处理，标配百万级上下文窗口。采用创新 MoE 架构与 CSA+HCA 混合压缩注意力技术，V4-Pro 版本性能媲美顶级闭源模型。API 价格仅为 GPT-5 的 1/18，继续沿用开源策略。
+🔗 [腾讯云开发者](https://cloud.tencent.com/developer/article/2663824)
+
+💡 **元启划重点：** DeepSeek 是真的卷到底了——开源、多模态、超长上下文、白菜价全配齐。国内能用还便宜，中小团队直接抄作业。唯一的问题：这价格能持续多久？先薅再说，别等涨价了后悔。
+
+---
+
+🔥 **字节跳动 Seedance 2.0 全面接入豆包：AI 视频走向大众**
+📝 字节跳动 Seedance 2.0 视频生成模型全面接入豆包 AI 助手，用户可直接免费文生视频。支持写实、动画、科幻等多种风格。字节同步推出「火山剧创」AI 漫剧工具，覆盖剧本→分镜→对白全流程。即梦 AI 平台也集成了该能力，AI 视频从专业工具走向大众消费级应用。
+🔗 [豆包官网](https://www.doubao.com/)
+
+💡 **元启划重点：** 字节这是要把 AI 视频塞到每个抖音用户手里。Seedance 2.0 在豆包里免费，门槛直接打到零。视频创作者要睡不着了——以前一个团队干的事，现在一个人加个 prompt 搞定。赶紧学起来，不学就被淘汰了。
+
+---
+
+🔥 **Gemini 3.5 Flash 发布：比竞品快 4 倍的 Agent 模型**
+📝 Google I/O 2026 同期发布 Gemini 3.5 Flash，生成输出 Token 速度约为其他前沿模型的 4 倍，Agent 任务性能提升至 83.6%。专为 AI Agent 和编码工具等场景优化，在多项基准测试中超越 Gemini 3.1 Pro。同时发布 Gemini Spark——可 24 小时运行在谷歌云上的个人 AI 代理，深度整合 Gmail、Calendar、Docs 等生态。
+🔗 [网易科技](https://m.163.com/dy/article/KTDGNR4F0511CQ7I.html)
+
+💡 **元启划重点：** Google 这次 I/O 真不画饼了，东西都是能用的。Gemini Spark 才是真正的主角——24 小时在云上跑的 AI 代理，对标的是 Agent 赛道。但 Google 的产品落地速度…懂的都懂。能不能干过 Anthropic 和 OpenAI 还两说。
+
+---
+
+🔥 **5 月 AI 融资热潮：37 笔交易，250 亿美元，基础设施最受追捧**
+📝 2026 年 5 月，AI 初创公司融资活动持续高涨。据统计，在 82 笔总融资信号中，37 笔涉及 AI/机器学习领域，披露金额达 250 亿美元。资本从「卷模型」转向「卷基础设施」——AI 芯片、模型聚合平台、算力服务商成为最大赢家。OpenRouter 融资 1.13 亿美元进一步印证了这一趋势。
+🔗 [InforCapital](https://inforcapital.com/blog/2026-05-09-ai-startup-funding-surges-in-may-37-deals-and-25-billion-as-investors-double-down-on-machine-learning/)
+
+💡 **元启划重点：** 资本的钱还是往 AI 砸，但风向变了——不赌大模型了，改赌基础设施。OpenRouter 这种「卖水人」拿了 1.13 亿，说明投资人也学聪明了。但基础设施赛道也卷得离谱，最后活下来的不会太多。
+
+---
+
+🔥 **Meta 与 AWS 合作 Graviton 芯片，发力 AI 芯片自研**
+📝 4 月 27 日，Meta 宣布与 AWS 在 Graviton 芯片上达成合作，以支撑其 AI Agent 工作负载。同时 Meta 还在推进太空太阳能和长时储能项目以解决 AI 计算的能源需求问题。Meta 正从「依赖 NVIDIA GPU」转向「自研 + 多方合作」的芯片战略，Graviton 芯片将用于 Meta 的 AI 推理服务。
+🔗 [Meta Newsroom](https://about.fb.com/news/category/technologies/meta/)
+
+💡 **元启划重点：** Meta 不想被英伟达卡脖子，开始搞「全家桶」芯片战略了。AWS 的 Graviton 走的是 ARM 路线，省电但性能跟 H100 比差远了。Meta 这招是「广撒网」，但短期内该买的 H100 一张也少不了。看看就好，不一定是利好。
+
+---
+
+📬 每天早上，AI 资讯直达邮箱
+👉 订阅：https://bestai.cool
+
+© 2026 bestai.cool · 用 ❤ 和 AI 构建
