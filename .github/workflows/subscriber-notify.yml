@@ -1,0 +1,46 @@
+name: 📬 Notify New Subscriber
+
+on:
+  push:
+    paths:
+      - 'data/subscribers/**.json'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Process new subscribers
+        env:
+          RESEND_KEY: re_Fnhyk1nF_5suGWzCnvLV1jqvsF7zUbZYX
+        run: |
+          NEW_COUNT=0
+          for file in data/subscribers/*.json; do
+            [ -f "$file" ] || continue
+            EMAIL=$(jq -r '.email' "$file")
+            TIME=$(jq -r '.time' "$file")
+            echo "📬 New subscriber: $EMAIL ($TIME)"
+
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST https://api.resend.com/emails \
+              -H "Authorization: Bearer $RESEND_KEY" \
+              -H "Content-Type: application/json" \
+              -d "{\"from\":\"bestai.cool <notify@bestai.cool>\",\"to\":[\"zhangyujie9023@gmail.com\"],\"subject\":\"📬 新订阅者: $EMAIL\",\"html\":\"<h2>🎉 新订阅者!</h2><p>邮箱: <strong>$EMAIL</strong></p><p>时间: $TIME</p>\"}")
+
+            echo "Resend API response: $STATUS"
+
+            mkdir -p data/subscribers/processed
+            mv "$file" data/subscribers/processed/
+            NEW_COUNT=$((NEW_COUNT + 1))
+          done
+
+          if [ $NEW_COUNT -gt 0 ]; then
+            echo "✅ Processed $NEW_COUNT subscriber(s)"
+            git config user.name "bestai-bot"
+            git config user.email "bot@bestai.cool"
+            git add -A
+            git commit -m "✅ Processed $NEW_COUNT subscriber(s)" || true
+            git push
+          else
+            echo "No new subscribers to process"
+          fi

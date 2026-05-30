@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bestai.cool — 设计预览</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root {
+  --bg: #0c0c1d;
+  --card: #12122a;
+  --card-border: rgba(99,102,241,0.1);
+  --text: #e2e8f0;
+  --text2: #94a3b8;
+  --text3: #4a5568;
+  --purple: #818cf8;
+  --gradient: linear-gradient(135deg, #6366f1, #a78bfa);
+  --radius: 12px;
+}
+body {
+  font-family: "PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 800px; margin: 0 auto; padding: 16px 20px;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+}
+.brand-mark {
+  width: 32px; height: 32px;
+  background: var(--gradient);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 800; color: #fff;
+}
+.brand-name {
+  font-size: 18px; font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.header-cta {
+  font-size: 13px; padding: 8px 18px;
+  background: var(--gradient); color: #fff;
+  border-radius: 20px; text-decoration: none; font-weight: 600;
+}
+
+/* ===== HERO ===== */
+.hero {
+  max-width: 800px; margin: 40px auto 0; padding: 0 20px;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; color: var(--purple);
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.15);
+  padding: 4px 14px; border-radius: 20px;
+  margin-bottom: 24px;
+}
+.hero-badge .dot {
+  width: 6px; height: 6px; background: var(--purple);
+  border-radius: 50%;
+}
+.hero h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800; line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+.hero h1 .highlight {
+  background: var(--gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero p {
+  font-size: 16px; color: var(--text2);
+  max-width: 480px; margin: 16px auto 28px;
+  line-height: 1.8;
+}
+.hero-actions {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.hero-cta {
+  padding: 12px 32px;
+  background: var(--gradient); color: #fff;
+  border: none; border-radius: 50px;
+  font-size: 15px; font-weight: 600; cursor: pointer;
+  text-decoration: none; font-family: inherit;
+}
+.hero-link {
+  padding: 12px 24px;
+  border: 1px solid var(--card-border); border-radius: 50px;
+  color: var(--text2); text-decoration: none;
+  font-size: 14px; background: var(--card);
+}
+.subscriber-count {
+  margin-top: 20px;
+  font-size: 13px; color: var(--text3);
+}
+.subscriber-count strong { color: var(--text2); }
+
+/* ===== SECTION ===== */
+.section {
+  max-width: 800px; margin: 0 auto; padding: 0 20px;
+}
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 48px 0 20px;
+}
+.section-header h2 {
+  font-size: 20px; font-weight: 700;
+}
+.section-header .date {
+  font-size: 13px; color: var(--text3);
+}
+
+/* ===== ARTICLES ===== */
+.articles { display: flex; flex-direction: column; gap: 10px; }
+
+.article-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+.article-card:hover { border-color: rgba(99,102,241,0.3); }
+
+.article-featured {
+  border-left: 3px solid var(--purple);
+  background: linear-gradient(135deg, rgba(99,102,241,0.04), transparent);
+}
+
+.card-header {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.card-tag {
+  font-size: 11px; padding: 2px 8px;
+  background: rgba(99,102,241,0.1);
+  border-radius: 8px; color: var(--purple);
+  font-weight: 500;
+}
+.card-date {
+  font-size: 11px; color: var(--text3);
+}
+
+.article-card h3 {
+  font-size: 16px; font-weight: 600;
+  margin-bottom: 6px; line-height: 1.4;
+}
+.article-card h3 a {
+  color: inherit; text-decoration: none;
+}
+.article-card h3 a:hover { color: var(--purple); }
+
+.card-summary {
+  font-size: 14px; color: var(--text2);
+  line-height: 1.7;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-links {
+  margin-top: 10px;
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+.card-links a {
+  font-size: 12px; color: var(--text3);
+  text-decoration: none; padding: 4px 0;
+}
+.card-links a:hover { color: var(--purple); }
+
+/* ===== FEATURES ===== */
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+.feature {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 20px 16px;
+  text-align: center;
+}
+.feature .icon { font-size: 24px; margin-bottom: 8px; }
+.feature h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.feature p { font-size: 12px; color: var(--text3); line-height: 1.5; }
+
+/* ===== SUBSCRIBE ===== */
+.subscribe-section {
+  max-width: 800px; margin: 48px auto 0; padding: 0 20px;
+}
+.subscribe-card {
+  background: linear-gradient(135deg, #12122a, #1a1a3a);
+  border: 1px solid rgba(99,102,241,0.15);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  text-align: center;
+}
+.subscribe-card h2 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+.subscribe-card p { font-size: 14px; color: var(--text2); margin-bottom: 20px; }
+.subscribe-card form {
+  display: flex; gap: 8px;
+  max-width: 420px; margin: 0 auto;
+  justify-content: center;
+}
+.subscribe-card input {
+  flex: 1; min-width: 200px;
+  padding: 12px 18px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--card-border);
+  border-radius: 50px;
+  color: var(--text); font-size: 14px; font-family: inherit;
+  outline: none;
+}
+.subscribe-card input:focus { border-color: var(--purple); }
+.subscribe-card button {
+  padding: 12px 28px;
+  background: var(--gradient); color: #fff;
+  border: none; border-radius: 50px;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  font-family: inherit;
+}
+.subscribe-card .note {
+  font-size: 12px; color: var(--text3); margin-top: 14px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  max-width: 800px; margin: 48px auto 0;
+  padding: 24px 20px;
+  border-top: 1px solid rgba(99,102,241,0.06);
+  text-align: center;
+}
+.footer p { font-size: 12px; color: var(--text3); }
+.footer a { color: var(--text3); text-decoration: none; }
+.footer a:hover { color: var(--purple); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .header { padding: 12px 16px; }
+  .hero { margin-top: 24px; }
+  .hero h1 { font-size: 28px; }
+  .hero p { font-size: 14px; }
+  .features { grid-template-columns: repeat(2, 1fr); }
+  .subscribe-card { padding: 28px 20px; }
+  .subscribe-card form { flex-direction: column; }
+  .subscribe-card input { min-width: 100%; }
+  .subscribe-card button { width: 100%; }
+  .article-card { padding: 14px 16px; }
+  .article-card h3 { font-size: 15px; }
+  .card-summary { font-size: 13px; }
+}
+
+@media (max-width: 400px) {
+  .hero h1 { font-size: 24px; }
+  .features { grid-template-columns: 1fr; }
+  .section-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="brand">
+    <div class="brand-mark">B</div>
+    <span class="brand-name">bestai.cool</span>
+  </div>
+  <a href="#subscribe" class="header-cta">免费订阅</a>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span> AI 资讯每日精选
+  </div>
+  <h1>每天<span class="highlight"> 5 分钟</span><br>读懂 AI 圈发生了什么</h1>
+  <p>不堆术语、不贩卖焦虑、只说人话。<br>多 Agent 智能采集 + 人工审核，从 100+ 信息源中挑出最重要的 5 条。</p>
+  <div class="hero-actions">
+    <a href="#subscribe" class="hero-cta">📬 免费订阅</a>
+    <a href="#articles" class="hero-link">浏览今日资讯 →</a>
+  </div>
+  <div class="subscriber-count">
+    <strong>100+</strong> 信息源监控 · <strong>5</strong> 条每日精选 · 永久免费
+  </div>
+</section>
+
+<!-- Today's Articles -->
+<section class="section" id="articles">
+  <div class="section-header">
+    <h2>📰 今日 AI 要闻</h2>
+    <span class="date">2026年5月26日</span>
+  </div>
+
+  <div class="articles">
+
+    <div class="article-card article-featured">
+      <div class="card-header">
+        <span class="card-tag">🌟 头条</span>
+        <span class="card-tag">重磅</span>
+        <span class="card-date">2026-05-26</span>
+      </div>
+      <h3><a href="#">Google 发布 Gemini 3 Ultra，性能全面超越 GPT-5</a></h3>
+      <p class="card-summary">Google 在今天的 I/O 大会上正式发布了 Gemini 3 Ultra，在多项基准测试中全面超越 GPT-5，并首次实现了 200 万 token 上下文窗口...</p>
+      <div class="card-links">
+        <a href="#">The Verge ↗</a>
+        <a href="#">TechCrunch ↗</a>
+        <a href="#">36氪 ↗</a>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-header">
+        <span class="card-tag">开源</span>
+        <span class="card-date">2026-05-26</span>
+      </div>
+      <h3><a href="#">Meta 开源 LLaMA 4 全系列，最大 405B 参数免费可商用</a></h3>
+      <p class="card-summary">Meta 正式发布 LLaMA 4 系列，从 8B 到 405B 共 4 个尺寸，全部开源且可商用。405B 版本在推理能力上首次接近 Claude Opus 4...</p>
+      <div class="card-links">
+        <a href="#">GitHub ↗</a>
+        <a href="#">HuggingFace ↗</a>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-header">
+        <span class="card-tag">融资</span>
+        <span class="card-date">2026-05-26</span>
+      </div>
+      <h3><a href="#">AI Coding 新贵 Cognition Labs 估值突破 200 亿美元</a></h3>
+      <p class="card-summary">Devin 母公司 Cognition Labs 完成新一轮 50 亿美元融资，SoftBank 领投。公司年化收入已超 10 亿美元，成为 AI 编程赛道估值最高的独角兽...</p>
+      <div class="card-links">
+        <a href="#">Bloomberg ↗</a>
+        <a href="#">36氪 ↗</a>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-header">
+        <span class="card-tag">应用</span>
+        <span class="card-date">2026-05-26</span>
+      </div>
+      <h3><a href="#">Notion AI 推出自主 Agent 功能，可独立完成项目管理</a></h3>
+      <p class="card-summary">Notion 宣布其 AI 助手升级为自主 Agent 模式，能独立管理项目进度、分配任务、撰写周报，用户只需审批关键决策...</p>
+      <div class="card-links">
+        <a href="#">Notion Blog ↗</a>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-header">
+        <span class="card-tag">研究</span>
+        <span class="card-date">2026-05-26</span>
+      </div>
+      <h3><a href="#">MIT 提出新型架构，Transformer 推理速度提升 20 倍</a></h3>
+      <p class="card-summary">MIT CSAIL 团队提出 Mamba-Former 混合架构，在保持 Transformer 精度的同时将推理速度提升 20 倍，特别适合移动端部署...</p>
+      <div class="card-links">
+        <a href="#">arXiv ↗</a>
+        <a href="#">MIT News ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Features -->
+<section class="section">
+  <div class="features">
+    <div class="feature">
+      <div class="icon">🤖</div>
+      <h4>AI 采集</h4>
+      <p>多 Agent 自动扫描 100+ 信源</p>
+    </div>
+    <div class="feature">
+      <div class="icon">👁️</div>
+      <h4>人工甄选</h4>
+      <p>编辑把关去重去噪</p>
+    </div>
+    <div class="feature">
+      <div class="icon">⏱️</div>
+      <h4>5 分钟</h4>
+      <p>每天一条不超时</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🆓</div>
+      <h4>永久免费</h4>
+      <p>无需信用卡</p>
+    </div>
+  </div>
+</section>
+
+<!-- Subscribe -->
+<section class="subscribe-section" id="subscribe">
+  <div class="subscribe-card">
+    <h2>📬 每天早上，5 条精选资讯直达邮箱</h2>
+    <p>不卖邮箱 · 可随时退订 · 已有 100+ 读者订阅</p>
+    <form>
+      <input type="email" placeholder="your@email.com" required>
+      <button type="submit">免费订阅</button>
+    </form>
+    <div class="note">
+      多 Agent 采集 + 人工审核 · 7×24 不间断
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 <a href="https://bestai.cool">bestai.cool</a> · 用 ❤️ 和 AI 构建</p>
+</footer>
+
+</body>
+</html>

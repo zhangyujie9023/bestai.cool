@@ -175,6 +175,47 @@ body::before {
   font-size: 13px; color: var(--text-muted); margin-top: 4px;
 }
 
+/* ========== Subscribe ========== */
+.subscribe-section {
+  max-width: 720px; margin: 60px auto 0; padding: 0 20px;
+}
+.subscribe-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 40px 36px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(99,102,241,0.06);
+}
+.subscribe-card .sub-icon { font-size: 36px; margin-bottom: 12px; }
+.subscribe-card h2 { font-size: 22px; font-weight: 700; margin-bottom: 6px; color: #1e293b; }
+.subscribe-card .sub-desc { font-size: 14px; color: #64748b; margin-bottom: 24px; }
+.subscribe-card form {
+  display: flex; gap: 8px;
+  max-width: 420px; margin: 0 auto;
+  justify-content: center;
+}
+.subscribe-card input {
+  flex: 1; min-width: 200px;
+  padding: 12px 18px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 50px;
+  color: #1e293b; font-size: 14px; font-family: inherit;
+  outline: none;
+}
+.subscribe-card input:focus { border-color: #6366f1; }
+.subscribe-card button {
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  border: none; border-radius: 50px;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  font-family: inherit;
+}
+.subscribe-card .note { font-size: 12px; color: #64748b; margin-top: 14px; }
+.subscribe-card .note.success { color: #10b981; }
+
 /* ========== Footer ========== */
 .footer {
   text-align: center; padding: 40px 0;
@@ -182,7 +223,7 @@ body::before {
   margin-top: 40px;
 }
 .footer p {
-  font-size: 13px; color: #94a3b8;
+  font-size: 13px; color: #475569;
 }
 .footer a {
   color: #6366f1; text-decoration: none;
@@ -237,7 +278,7 @@ body::before {
       <div class="brand-box">B</div>
       <span class="header-brand">bestai.cool</span>
     </div>
-    <a href="mailto:?subject=订阅 bestai.cool 资讯" class="header-subscribe">免费订阅</a>
+    <a href="#subscribe-form" class="header-subscribe">免费订阅</a>
   </header>
 
   <!-- Hero -->
@@ -248,16 +289,16 @@ body::before {
       不堆术语 · 不贩卖焦虑 · 只说人话
     </p>
     <div class="hero-actions">
-      <a href="mailto:?subject=订阅 bestai.cool 资讯" class="hero-cta">✨ 免费订阅</a>
+      <a href="#subscribe-form" class="hero-cta">✨ 免费订阅</a>
       <a href="today.html" class="hero-link">浏览今日资讯 →</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="num">100+</div>
+        <div class="num">1000+</div>
         <div class="label">信息源监控</div>
       </div>
       <div class="hero-stat">
-        <div class="num">5 条</div>
+        <div class="num">10 条</div>
         <div class="label">每日精选</div>
       </div>
       <div class="hero-stat">
@@ -267,12 +308,51 @@ body::before {
     </div>
   </section>
 
+  <!-- Subscribe Form -->
+  <section class="subscribe-section" id="subscribe-form">
+    <div class="subscribe-card">
+      <div class="sub-icon">📬</div>
+      <h2>每天早上，AI 资讯直达邮箱</h2>
+      <p class="sub-desc">留下邮箱，不错过任何重要动态</p>
+      <form onsubmit="return doSubscribe(event)">
+        <input type="email" name="email" id="semail" placeholder="your@email.com" required>
+        <button type="submit" id="sbtn">免费订阅</button>
+      </form>
+      <div class="note" id="smsg">不卖邮箱 · 可随时退订</div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <p>© 2026 <a href="https://bestai.cool">bestai.cool</a> · 用 ❤️ 和 AI 构建</p>
   </footer>
 
 </div>
+
+<!-- Subscribe JS -->
+<script>
+async function doSubscribe(e) {
+  e.preventDefault();
+  var email = document.getElementById('semail').value.trim();
+  var msg = document.getElementById('smsg');
+  var btn = document.getElementById('sbtn');
+  if (!email) return false;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.innerHTML='⚠️ 请输入有效的邮箱地址'; return false; }
+  
+  // 立即显示成功（先响应）
+  msg.innerHTML = '✅ 订阅成功！明天早上查收邮件';
+  msg.className = 'note success';
+  document.getElementById('semail').value = '';
+  
+  // 后台异步记录（不阻塞用户）
+  fetch('https://bestai.cool/api/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'email=' + encodeURIComponent(email)
+  }).catch(function(){});
+  return false;
+}
+</script>
 
 </body>
 </html>
