@@ -205,6 +205,69 @@ body::before {
   border-radius: 2px; margin: 0 auto;
 }
 
+/* ========== 差异化证据区 ========== */
+.diff-section { padding: 40px 0 20px; }
+.diff-grid {
+  display: flex; justify-content: center; gap: 32px;
+  flex-wrap: wrap;
+}
+.diff-item {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 24px;
+  transition: all 0.3s ease;
+  min-width: 240px;
+}
+.diff-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+.diff-item .diff-icon { font-size: 28px; flex-shrink: 0; }
+.diff-item .diff-text { font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
+.diff-item .diff-text strong { color: #f1f5f9; }
+
+/* ========== 三大核心优势 ========== */
+.promise-section { padding: 20px 0 40px; }
+.promise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.promise-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.promise-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+.promise-card .p-icon {
+  font-size: 32px; margin-bottom: 14px;
+  display: inline-block;
+  width: 64px; height: 64px; line-height: 64px;
+  border-radius: 50%;
+  background: rgba(99,102,241,0.08);
+}
+.promise-card h3 {
+  font-size: 17px; font-weight: 700; margin-bottom: 8px;
+  color: #f1f5f9;
+}
+.promise-card p {
+  font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+}
+
 /* ========== Article Cards ========== */
 .articles-section {
   padding: 60px 0;
@@ -401,17 +464,67 @@ body::before {
 
 /* ========== Footer ========== */
 .footer {
-  text-align: center; padding: 40px 0;
+  padding: 48px 0 0;
   border-top: 1px solid var(--border);
   margin-top: 40px;
 }
-.footer p {
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 32px;
+  text-align: left;
+}
+.footer-col h4 {
+  font-size: 14px; font-weight: 600; color: #f1f5f9;
+  margin-bottom: 14px;
+}
+.footer-brand {
+  font-size: 18px; font-weight: 700;
+  background: var(--gradient-glow);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+}
+.footer-desc {
+  font-size: 13px; color: var(--text-muted);
+  line-height: 1.7;
+}
+.footer-col ul { list-style: none; padding: 0; }
+.footer-col ul li { margin-bottom: 8px; }
+.footer-col ul li a {
+  font-size: 13px; color: var(--text-secondary);
+  text-decoration: none; transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: #a78bfa; }
+.footer-social {
+  display: flex; gap: 12px; margin-bottom: 12px;
+}
+.footer-social a {
+  font-size: 22px; color: var(--text-muted);
+  text-decoration: none; transition: color 0.2s, transform 0.2s;
+  display: inline-block;
+}
+.footer-social a:hover { color: #a78bfa; transform: translateY(-2px); }
+.footer-motto {
+  font-size: 12px; color: var(--text-muted);
+}
+.footer-bottom {
+  text-align: center; padding: 24px 0;
+  margin-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.footer-bottom p {
   font-size: 13px; color: var(--text-secondary);
 }
-.footer a {
+.footer-bottom a {
   color: #818cf8; text-decoration: none;
 }
-.footer a:hover { color: #a78bfa; }
+.footer-bottom a:hover { color: #a78bfa; }
+
+@media (max-width: 640px) {
+  .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 24px; }
+  .footer-social { justify-content: center; }
+}
 
 /* ========== Responsive ========== */
 @media (max-width: 768px) {
@@ -419,6 +532,8 @@ body::before {
   .hero { padding: 0 0 50px; }
   .hero h1 { font-size: 32px; }
   .hero-stats { gap: 24px; }
+  .promise-grid { grid-template-columns: 1fr; }
+  .diff-grid { flex-direction: column; align-items: center; }
   .articles-grid { gap: 14px; }
   .article-card { padding: 20px 20px; }
   .article-card h3 { font-size: 17px; }
@@ -455,6 +570,9 @@ body::before {
   .section-header h2 { font-size: 22px; }
   .subscribe-card { padding: 28px 16px; }
   .subscribe-card h2 { font-size: 20px; }
+  .subscribe-card form { flex-direction: column; }
+  .subscribe-card input[type=\"email\"] { min-width: 100%; }
+  .subscribe-card button { width: 100%; }
 }
 </style>
 </head>
@@ -501,6 +619,53 @@ body::before {
       <div class="hero-stat">
         <div class="num">5 分钟</div>
         <div class="label">轻松读完</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 差异化证据区：为什么选择我们 -->
+  <section class="diff-section">
+    <div class="section-header">
+      <h2>🎯 为什么选择我们</h2>
+      <div class="line"></div>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-item">
+        <span class="diff-icon">📊</span>
+        <span class="diff-text"><strong>别人 50 篇</strong> → 我们只选 10 篇</span>
+      </div>
+      <div class="diff-item">
+        <span class="diff-icon">💬</span>
+        <span class="diff-text"><strong>每篇附一句话</strong> 通俗解读</span>
+      </div>
+      <div class="diff-item">
+        <span class="diff-icon">🚫</span>
+        <span class="diff-text"><strong>无广告 · 无软文</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三大核心优势 -->
+  <section class="promise-section">
+    <div class="section-header">
+      <h2>💪 三大核心优势</h2>
+      <div class="line"></div>
+    </div>
+    <div class="promise-grid">
+      <div class="promise-card">
+        <div class="p-icon">🤖</div>
+        <h3>AI + 人工精选</h3>
+        <p>多 Agent 扫描 1000+ 全球 AI 信源，再经人类编辑精筛，去重去噪去广告</p>
+      </div>
+      <div class="promise-card">
+        <div class="p-icon">⏰</div>
+        <h3>每日准时送达</h3>
+        <p>每天早上 8 点，10 条精选 AI 资讯准时推送到你的邮箱——像早餐一样准时</p>
+      </div>
+      <div class="promise-card">
+        <div class="p-icon">🔭</div>
+        <h3>行业全景扫描</h3>
+        <p>人才地震 · 商业里程碑 · 模型创新 · AI 伦理 · 学术突破，五大维度全覆盖</p>
       </div>
     </div>
   </section>
@@ -623,7 +788,11 @@ body::before {
       <h2>每天中午，AI 资讯直达邮箱</h2>
       <p class="sub-desc">留下邮箱，不错过任何重要动态</p>
       <p class="sub-social">已有 <strong>4</strong> 位读者订阅 ✨</p>
-      <form action="https://formsubmit.co/zhangyujie9023@gmail.com" method="POST" onsubmit="return doSubscribe(event)">
+      <div id="subscribed-msg" style="display:none;padding:16px;background:rgba(99,102,241,0.08);border:1px solid var(--border);border-radius:var(--radius-sm);">
+        <p style="font-size:16px;font-weight:600;color:#a5b4fc;">✅ 你已订阅，每天早 8 点查收</p>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:6px;">无需重复订阅，感谢你的支持 🙌</p>
+      </div>
+      <form id="subscribe-form" action="https://formsubmit.co/zhangyujie9023@gmail.com" method="POST" onsubmit="return doSubscribe(event)">
         <input type="hidden" name="_subject" value="📬 bestai.cool 新订阅者">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
@@ -636,7 +805,33 @@ body::before {
 
   <!-- Footer -->
   <footer class="footer">
-    <p>© 2026 <a href="https://bestai.cool">bestai.cool</a> · 用 ❤️ 和 AI 构建</p>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">bestai.cool</div>
+        <p class="footer-desc">每天 5 分钟，读懂 AI 圈。不堆术语、不贩卖焦虑、只说人话。多 Agent 采集 + 人工审核，为你精选每日 AI 要闻。</p>
+      </div>
+      <div class="footer-col">
+        <h4>快速链接</h4>
+        <ul>
+          <li><a href="/today.html">📰 今日资讯</a></li>
+          <li><a href="#">📚 资讯归档</a></li>
+          <li><a href="/feed.xml">📡 RSS 订阅</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>关注我们</h4>
+        <div class="footer-social">
+          <a href="#" title="Twitter / X">🐦</a>
+          <a href="#" title="微信公众号">💬</a>
+          <a href="mailto:zhangyujie9023@gmail.com" title="邮件联系">📧</a>
+          <a href="#" title="GitHub">🐙</a>
+        </div>
+        <p class="footer-motto">用 ❤️ 和 AI 构建</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <a href="https://bestai.cool">bestai.cool</a> · 让每个人都能跟上 AI 时代</p>
+    </div>
   </footer>
 
 </div>
@@ -674,13 +869,28 @@ async function doSubscribe(e) {
     msg.innerHTML = '🚀 今天12:30发车，查收邮箱！';
     msg.className = 'note success';
     document.getElementById('semail').value = '';
+    // 记录订阅状态到 localStorage
+    try { localStorage.setItem('subscribed_at', new Date().toISOString()); } catch(e) {}
+    // 隐藏订阅表单
+    document.getElementById('subscribe-form').style.display = 'none';
+    document.getElementById('subscribed-msg').style.display = 'block';
   } catch (err) {
-    msg.innerHTML = '🚀 今天12:30发车，查收邮箱！';
-    msg.className = 'note success';
+    msg.innerHTML = '⚠️ 订阅请求发送失败，请稍后再试';
+    msg.className = 'note';
   }
   btn.disabled = false; btn.textContent = '立即免费订阅 →';
   return false;
 }
+
+// ========== 已订阅用户检测 ==========
+(function() {
+  try {
+    if (localStorage.getItem('subscribed_at')) {
+      document.getElementById('subscribe-form').style.display = 'none';
+      document.getElementById('subscribed-msg').style.display = 'block';
+    }
+  } catch(e) {}
+})();
 </script>
 
 </body>
